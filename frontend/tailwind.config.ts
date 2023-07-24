@@ -6,7 +6,9 @@ export default {
     extend: {
       colors: {
         black25: "#252525",
-        theme: "var(--text-color)",
+        dark: "#f8be6a",
+        light: "#558ec3",
+        red: "#FF0000",
       },
     },
   },
