@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-color: #558ec3; /* Default text color for light mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #f8be6a; /* Text color for dark mode */
+  }
+}
