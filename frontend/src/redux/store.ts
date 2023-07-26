@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "./features/counterSlice";
 import switchThemeSlice from "./features/switchThemeSlice";
+import isMobileSlice from "./features/isMobileSlice";
 
 const store = configureStore({
   reducer: {
-    counter: counterSlice,
     theme: switchThemeSlice,
+    isMobile: isMobileSlice,
   },
 });
 

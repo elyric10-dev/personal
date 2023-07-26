@@ -4,14 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeSwitch from "../ThemeSwitch";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import BurgerIcon from "~/shared/icons/Burger";
 import { type RootState } from "~/redux/types";
+import { setIsMobile } from "~/redux/features/isMobileSlice";
 
 const HeaderNavigation: React.FC = () => {
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
   const [isClient, setIsClient] = useState(false);
   const isDark = isClient && currentTheme;
+  const isMobile = useSelector((state: RootState) => state.isMobile.value);
+  const dispatch = useDispatch();
+
   const navLinks = [
     {
       label: "HOME",
@@ -35,13 +39,31 @@ const HeaderNavigation: React.FC = () => {
     setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const isSmall = window.innerWidth <= 768;
+      dispatch(setIsMobile(isSmall));
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [dispatch]);
+
   const [showDropdown, setShowDropdown] = useState(false);
-  const navText = `text-md font-[300] px-3 py-1 md:px-6 bg-white-100 ${
+  const navText = `${
+    isMobile
+      ? "text-md font-[300] px-3 py-1 md:px-6 bg-white-100"
+      : "text-md lg:text-xl font-[300] px-3 py-1 md:px-6 border-none"
+  } ${
     isDark
-      ? "hover:bg-gray-600 hover:text-gray-200"
-      : "hover:bg-gray-200 hover:text-black25"
+      ? "hover:bg-gray-600 hover:text-gray-200 rounded-md"
+      : "hover:bg-gray-200 hover:text-black25 rounded-md"
   } px-3 border`;
-  const activeLink = `${isDark ? "text-dark" : "text-light"} font-[400]`;
+  const activeLink = `${isDark ? "text-dark" : "text-light"} font-semibold`;
 
   const router = useRouter();
   const isLinkActive = (href: string) => router.pathname === href;
@@ -76,23 +98,37 @@ const HeaderNavigation: React.FC = () => {
         </div>
 
         {/* BURGER ICON  */}
-        <div className="flex items-center">
-          <div
-            onClick={handleClick}
-            className="cursor-pointer rounded-full border bg-gray-100 p-2 shadow-md"
-          >
-            <BurgerIcon classname="w-7" />
+        {isMobile ? (
+          <div className="flex items-center">
+            <div
+              onClick={handleClick}
+              className="cursor-pointer rounded-full border bg-gray-100 p-2 shadow-md"
+            >
+              <BurgerIcon classname="w-7" />
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
 
         {/* NAVIGATIONS  */}
-        {showDropdown && (
-          <>
-            <div className="absolute right-0 top-[99px] grid rounded-bl-xl shadow-lg">
+        <div
+          className={`${
+            isMobile
+              ? "absolute right-0 top-[99px] grid rounded-bl-xl shadow-lg"
+              : "flex items-center gap-4"
+          } `}
+        >
+          {isMobile && showDropdown && (
+            <>
               <div
-                className={`${
-                  isDark ? "bg-black25 text-gray-50" : "bg-gray-50 text-black25"
-                } rounded-tl-lg`}
+                className={` ${
+                  isMobile
+                    ? isDark
+                      ? "bg-black25 text-gray-50"
+                      : "rounded-tl-lg bg-gray-50 text-black25"
+                    : ""
+                }`}
               >
                 <ul className="">
                   {navLinks.map((navLink, index) => (
@@ -107,13 +143,37 @@ const HeaderNavigation: React.FC = () => {
                   ))}
                 </ul>
               </div>
-              <div className="">
-                {/* <Image src="/" alt={""} /> */}
+              <div>
                 <ThemeSwitch />
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+          {!isMobile && (
+            <>
+              <div
+                className={`relative flex ${
+                  isDark ? "bg-black25 text-gray-50" : "bg-white text-black25"
+                }`}
+              >
+                <ul className="flex">
+                  {navLinks.map((navLink, index) => (
+                    <li
+                      key={index}
+                      className={`${navText} ${
+                        isLinkActive(navLink.link) && activeLink
+                      }`}
+                    >
+                      <Link href={navLink.link}>{navLink.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="">
+                <ThemeSwitch className="relative flex cursor-pointer justify-center rounded-xl" />
+              </div>
+            </>
+          )}
+        </div>
       </header>
     </>
   );

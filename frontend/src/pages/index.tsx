@@ -4,7 +4,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Elyric A. Manatad</title>
+        <title>Welcome to my Portfolio</title>
         <meta name="description" content="Elyric Manatad Personal Web" />
         <link rel="icon" href="/eam.ico" />
       </Head>

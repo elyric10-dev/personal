@@ -1,7 +1,7 @@
-import { type CounterState } from "./features/counterSlice";
 import { type themeState } from "./features/switchThemeSlice";
+import { type IsMobileState } from "./features/isMobileSlice";
 
 export interface RootState {
-  counter: CounterState;
   theme: themeState;
+  isMobile: IsMobileState;
 }
