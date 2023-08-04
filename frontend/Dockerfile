@@ -7,7 +7,7 @@ WORKDIR /frontend/app
 COPY package.json .
 COPY package-lock.json .
 
-RUN npm install
+RUN NODE_ENV=development npm i
 
 COPY . .
 

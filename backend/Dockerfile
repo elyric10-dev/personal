@@ -12,7 +12,7 @@ COPY Pipfile Pipfile.lock ./
 COPY ./wait.sh ./
 RUN ["chmod", "+x", "/backend/app/wait.sh"]
 
-RUN pip install pip
+RUN pip install --upgrade pip
 RUN pip install pipenv
 RUN pipenv run pip install django
 RUN pipenv install --deploy --ignore-pipfile
