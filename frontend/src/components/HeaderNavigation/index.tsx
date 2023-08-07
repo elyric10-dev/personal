@@ -59,11 +59,11 @@ const HeaderNavigation: React.FC = () => {
     dispatch(setCurrentNavLink(navLink));
 
   return (
-    <>
+    <div className="absolute z-10 w-screen">
       <header
         className={`relative flex justify-between p-4 ${
           isDark ? "bg-black25" : "bg-white"
-        }  md:p-8`}
+        } md:p-8`}
       >
         <div className="flex w-[200px] items-center">
           <div className="flex">
@@ -121,10 +121,10 @@ const HeaderNavigation: React.FC = () => {
                   {navLinks.map((navLink, index) => (
                     <li
                       key={index}
-                      onClick={() => handleNavLink(navLink.link)}
+                      onClick={() => handleNavLink(navLink.id)}
                       className={`${navText} ${
                         index === 0 && "rounded-tl-lg"
-                      } ${isLinkActive(navLink.link) && activeLink}`}
+                      } ${isLinkActive(navLink.id) && activeLink}`}
                     >
                       <div>{navLink.label}</div>
                     </li>
@@ -147,9 +147,9 @@ const HeaderNavigation: React.FC = () => {
                   {navLinks.map((navLink, index) => (
                     <li
                       key={index}
-                      onClick={() => handleNavLink(navLink.link)}
+                      onClick={() => handleNavLink(navLink.id)}
                       className={`${navText} ${
-                        isLinkActive(navLink.link) && activeLink
+                        isLinkActive(navLink.id) && activeLink
                       }`}
                     >
                       <div>{navLink.label}</div>
@@ -164,7 +164,7 @@ const HeaderNavigation: React.FC = () => {
           )}
         </div>
       </header>
-    </>
+    </div>
   );
 };
 
