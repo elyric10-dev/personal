@@ -8,7 +8,6 @@ const Home: React.FC = () => {
         <meta name="description" content="Elyric Manatad Personal Web" />
         <link rel="icon" href="/eam.ico" />
       </Head>
-      <main>Hello</main>
     </>
   );
 };

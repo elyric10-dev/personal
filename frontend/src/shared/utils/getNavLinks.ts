@@ -2,19 +2,19 @@ const getNavLinks = () => {
   return [
     {
       label: "HOME",
-      link: "home",
+      id: "home",
     },
     {
       label: "ABOUT",
-      link: "about",
+      id: "about",
     },
     {
       label: "PORTFOLIO",
-      link: "portfolio",
+      id: "portfolio",
     },
     {
       label: "CONTACT",
-      link: "contact",
+      id: "contact",
     },
   ];
 };
