@@ -45,8 +45,8 @@ const HeaderNavigation: React.FC = () => {
       : "text-md lg:text-xl font-[300] px-3 py-1 md:px-6 border-none"
   } ${
     isDark
-      ? "hover:bg-gray-600 hover:text-gray-200"
-      : "hover:bg-gray-200 hover:text-black25"
+      ? "hover:text-gray-200 hover:border-b-dark"
+      : "hover:text-black25 hover:border-b-light"
   } px-3 border border-b cursor-pointer`;
   const activeLink = `${isDark ? "text-dark" : "text-light"} font-semibold`;
 
@@ -61,9 +61,7 @@ const HeaderNavigation: React.FC = () => {
   return (
     <div className="absolute z-10 w-screen">
       <header
-        className={`relative flex justify-between p-4 ${
-          isDark ? "bg-black25" : "bg-white"
-        } md:p-8`}
+        className={`relative flex justify-between p-4 backdrop-blur-[1.5px] md:p-8`}
       >
         <div className="flex w-[200px] items-center">
           <div className="flex">
@@ -123,7 +121,7 @@ const HeaderNavigation: React.FC = () => {
                       key={index}
                       onClick={() => handleNavLink(navLink.id)}
                       className={`${navText} ${
-                        index === 0 && "rounded-tl-lg"
+                        index === 0 && "relative rounded-tl-lg"
                       } ${isLinkActive(navLink.id) && activeLink}`}
                     >
                       <div>{navLink.label}</div>
@@ -140,7 +138,7 @@ const HeaderNavigation: React.FC = () => {
             <>
               <div
                 className={`relative flex ${
-                  isDark ? "bg-black25 text-gray-50" : "bg-white text-black25"
+                  isDark ? "text-gray-50" : "text-black25"
                 }`}
               >
                 <ul className="flex">
@@ -148,11 +146,14 @@ const HeaderNavigation: React.FC = () => {
                     <li
                       key={index}
                       onClick={() => handleNavLink(navLink.id)}
-                      className={`${navText} ${
+                      className={`${navText} group md:text-lg lg:text-2xl ${
                         isLinkActive(navLink.id) && activeLink
                       }`}
                     >
-                      <div>{navLink.label}</div>
+                      <div className="relative">
+                        {navLink.label}
+                        <div className="absolute bottom-0 -mb-1 h-[2px] w-0 bg-white transition-all duration-300 hover:shadow-md group-hover:w-full"></div>
+                      </div>
                     </li>
                   ))}
                 </ul>
