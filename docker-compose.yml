@@ -1,20 +1,5 @@
 version: "3"
 services:
-  db:
-    image: mysql:8.0
-    container_name: personal-mysql
-    user: mysql
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    restart: "always"
-    env_file: ./backend/.env
-    volumes:
-      - ./backend/my.cnf:/etc/mysql/conf.d/my.cnf
-      - mysql-data:/var/lib/mysql
-    ports:
-      - "3309:3306"
-    networks:
-      - personal
 
   frontend:
     container_name: personal-nextjs
@@ -24,21 +9,6 @@ services:
       - ./frontend:/frontend/app
     ports:
       - 3000:3000
-    networks:
-      - personal
-
-  backend:
-    container_name: personal-django
-    build:
-      context: ./backend
-    volumes:
-      - ./backend:/backend/app
-    entrypoint: ["bash", "./wait.sh"]
-    command: "pipenv run server"
-    ports:
-      - 8000:8000
-    depends_on:
-      - frontend
     networks:
       - personal
 
