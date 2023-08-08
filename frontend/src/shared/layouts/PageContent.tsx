@@ -7,7 +7,7 @@ interface PageContentLayoutProps {
 }
 const PageContentLayout: React.FC<PageContentLayoutProps> = ({ children }) => {
   return (
-    <div className="relative max-w-[1536px]">
+    <div className="relative">
       <HeaderNavigation />
       <SectionPages />
     </div>

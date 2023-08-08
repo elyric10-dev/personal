@@ -26,7 +26,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="relative flex h-full w-full items-center">
+      <div id="home" className="relative flex h-full w-full items-center">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 transform">
           <Image
             src={`${isDark ? "/hexaProfileDark.png" : "/hexaProfileLight.png"}`}
@@ -58,7 +58,11 @@ const HeroSection = () => {
               }  typing relative overflow-hidden pl-2 text-3xl font-semibold md:text-4xl`}
             >
               <div dangerouslySetInnerHTML={{ __html: currentTitle }} />
-              <div className="blinking absolute right-0 top-0 h-full w-[2px] border-2 border-gray-50"></div>
+              <div
+                className={`blinking absolute right-0 top-0 h-full w-[2px] border-2 ${
+                  isDark ? "border-gray-50" : "border-gray-400"
+                }`}
+              ></div>
             </h1>
             <h2
               className={`${

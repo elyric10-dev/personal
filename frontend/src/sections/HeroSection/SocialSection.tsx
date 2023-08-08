@@ -54,7 +54,9 @@ const SocialSection = () => {
             </Link>
           ))}
         </ul>
-        <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
+        <Link href="#about">
+          <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
+        </Link>
       </div>
     </div>
   );
