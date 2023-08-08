@@ -39,11 +39,7 @@ const SocialSection = () => {
   ];
   return (
     <div className="absolute bottom-0 h-20 w-full">
-      <div
-        className={`relative flex h-full w-full ${
-          isDark ? "bg-black25" : "bg-gray-50"
-        }`}
-      >
+      <div className={`relative flex h-full w-full backdrop-blur-[1.5px]`}>
         <ul className="flex h-full items-center gap-3 pl-8 shadow-lg">
           {socials.map((social, index) => (
             <Link href={social.link} key={index} target="__blank">

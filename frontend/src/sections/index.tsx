@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { type RootState } from "~/redux/types";
 import HeroSection from "./HeroSection";
-import SocialSection from "./HeroSection/SocialSection";
+import ParticlesBackground from "~/components/Particles/ParticlesBackground";
 
 const SectionPages = () => {
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
@@ -18,8 +18,8 @@ const SectionPages = () => {
         isDark ? "bg-black25" : "bg-gray-50"
       }`}
     >
+      <ParticlesBackground />
       <HeroSection />
-      <SocialSection />
     </main>
   );
 };
