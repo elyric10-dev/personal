@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import FacebookIcon from "~/shared/icons/FacebookIcon";
 import GithubIcon from "~/shared/icons/GithubIcon";
 import LinkedInIcon from "~/shared/icons/LinkedInIcon";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { type RootState } from "~/redux/types";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import Link from "next/link";
+import { Link as ScrollLink} from "react-scroll";
+import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 
 const SocialSection = () => {
+  const dispatch = useDispatch();
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
   const [isClient, setIsClient] = useState(false);
   const isDark = currentTheme && isClient;
@@ -37,6 +40,10 @@ const SocialSection = () => {
       link: "https://www.linkedin.com/in/elyric-manatad-422b15218/",
     },
   ];
+
+  const handleNav = (currentNavLink: string): void => {
+    dispatch(setCurrentNavLink(currentNavLink));
+  };
   return (
     <div className="absolute bottom-0 h-20 w-full">
       <div className={`relative flex h-full w-full backdrop-blur-[1.5px]`}>
@@ -54,9 +61,14 @@ const SocialSection = () => {
             </Link>
           ))}
         </ul>
-        <Link href="#about">
+        <ScrollLink
+          onClick={() => handleNav("about")}
+          to="about"
+          smooth={true}
+          duration={500}
+        >
           <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
-        </Link>
+        </ScrollLink>
       </div>
     </div>
   );

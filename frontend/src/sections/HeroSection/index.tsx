@@ -26,7 +26,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div id="home" className="relative flex h-full w-full items-center">
+      <div id="home" className="relative flex h-screen w-full items-center">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 transform">
           <Image
             src={`${isDark ? "/hexaProfileDark.png" : "/hexaProfileLight.png"}`}
@@ -37,13 +37,13 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex h-screen items-center">
+        <div className="flex h-full w-full min-w-[420px] items-center">
           <div
             className={`${
               isDark
                 ? "bg-black25 bg-opacity-60 p-4 shadow-gray-500 backdrop-blur-[5px]"
                 : "bg-gray-50 bg-opacity-40 p-4 shadow-gray-600 backdrop-blur-[5px]"
-            } mx-8 grid max-w-[436px] gap-1 rounded-xl border shadow-md md:max-w-[600px] md:gap-2 lg:max-w-[720px] lg:gap-4 xl:max-w-[920px]`}
+            } mx-6 grid max-w-[436px] gap-1 rounded-xl border shadow-md md:max-w-[600px] md:gap-2 lg:max-w-[720px] lg:gap-4 xl:max-w-[920px]`}
           >
             <h3
               className={`text-lg ${
@@ -95,8 +95,8 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+        <SocialSection />
       </div>
-      <SocialSection />
     </>
   );
 };

@@ -14,6 +14,8 @@ const BurgerIcon: React.FC<Props> = ({ classname, width, height }: Props) => {
       viewBox="0 0 24 24"
       fill="none"
       className={classname}
+      width={width}
+      height={height}
     >
       <path
         d="M4 7L7 7M20 7L11 7"

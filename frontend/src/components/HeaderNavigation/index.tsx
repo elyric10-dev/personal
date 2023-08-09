@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import ThemeSwitch from "../ThemeSwitch";
 import { useSelector, useDispatch } from "react-redux";
-import BurgerIcon from "~/shared/icons/Burger";
+import BurgerIcon from "~/shared/icons/BurgerIcon";
 import { type RootState } from "~/redux/types";
 import { setIsMobile, setIsTablet } from "~/redux/features/isMobileSlice";
 import getNavLinks from "~/shared/utils/getNavLinks";

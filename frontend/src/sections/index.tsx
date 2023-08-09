@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import { type RootState } from "~/redux/types";
 import HeroSection from "./HeroSection";
 import ParticlesBackground from "~/components/Particles/ParticlesBackground";
+import AboutSection from "./AboutSection";
+import PortfolioSection from "./PortfolioSection";
+import ContactSection from "./ContactSection";
 
 const SectionPages = () => {
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
@@ -14,12 +17,17 @@ const SectionPages = () => {
   }, []);
   return (
     <main
-      className={`absolute flex h-screen w-screen items-center ${
+      className={`absolute top-0 h-screen w-screen ${
         isDark ? "bg-black25" : "bg-gray-50"
       }`}
     >
-      <ParticlesBackground />
-      <HeroSection />
+      <div className="relative">
+        <ParticlesBackground />
+        <HeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <ContactSection isDark={isDark} />
+      </div>
     </main>
   );
 };

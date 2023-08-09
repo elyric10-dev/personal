@@ -1,21 +1,22 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import { useDispatch } from "react-redux";
+import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 
-const AboutSection = () => {
+const PortfolioSection = () => {
   const dispatch = useDispatch();
+
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
   };
   return (
-    <div id="about" className="relative h-screen w-full bg-green-300">
-      ABOUT SECTION
+    <div id="portfolio" className="relative h-screen w-full bg-blue-300">
+      PORTFOLIO SECTION
       <div className="absolute bottom-0 h-20 w-full">
         <ScrollLink
-          onClick={() => handleNav("portfolio")}
-          to="portfolio"
+          onClick={() => handleNav("contact")}
+          to="contact"
           smooth={true}
           duration={500}
         >
@@ -25,5 +26,4 @@ const AboutSection = () => {
     </div>
   );
 };
-
-export default AboutSection;
+export default PortfolioSection;
