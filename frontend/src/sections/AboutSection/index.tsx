@@ -3,11 +3,13 @@ import { Link as ScrollLink } from "react-scroll";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import { useDispatch } from "react-redux";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const AboutSection = () => {
   const dispatch = useDispatch();
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
+    dispatch(setDirectScrollCount(4));
   };
   return (
     <div id="about" className="relative h-screen w-full bg-green-300">

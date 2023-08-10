@@ -3,12 +3,14 @@ import { Link as ScrollLink } from "react-scroll";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import { useDispatch } from "react-redux";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const PortfolioSection = () => {
   const dispatch = useDispatch();
 
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
+    dispatch(setDirectScrollCount(6));
   };
   return (
     <div id="portfolio" className="relative h-screen w-full bg-blue-300">
