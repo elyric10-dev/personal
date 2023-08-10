@@ -3,6 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import ArrowIcon from "~/shared/icons/ArrowIcon";
 import { useDispatch } from "react-redux";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 interface props {
   isDark?: boolean;
@@ -11,11 +12,12 @@ const ContactSection = ({ isDark }: props) => {
   const dispatch = useDispatch();
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
+    dispatch(setDirectScrollCount(0));
   };
   return (
     <div id="contact" className="relative h-screen w-full bg-pink-300">
       CONTACT SECTION
-      <div className="absolute bottom-0 h-20 w-full cursor-pointer hover:animate-bounce">
+      <div className="absolute bottom-0 h-20 w-full animate-bounce cursor-pointer">
         <ScrollLink
           onClick={() => handleNav("home")}
           to="home"

@@ -3,18 +3,15 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { type RootState } from "~/redux/types";
 import SocialSection from "./SocialSection";
+import useIsClient from "~/hooks/useIsClient";
 
 const HeroSection = () => {
+  const isClient = useIsClient();
   const title1 = `I'M&nbsp;ELYRIC&nbsp;MANATAD`;
   const title2 = `I&apos;M&nbsp;A&nbsp;WEB&nbsp;DEVELOPER`;
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
-  const [isClient, setIsClient] = useState(false);
   const isDark = isClient && currentTheme;
   const [currentTitle, setCurrentTitle] = useState(title1);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

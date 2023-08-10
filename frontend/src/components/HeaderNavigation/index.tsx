@@ -1,55 +1,29 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import ThemeSwitch from "../ThemeSwitch";
 import { useSelector, useDispatch } from "react-redux";
 import BurgerIcon from "~/shared/icons/BurgerIcon";
 import { type RootState } from "~/redux/types";
-import { setIsMobile, setIsTablet } from "~/redux/features/isMobileSlice";
 import getNavLinks from "~/shared/utils/getNavLinks";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import useClickOutside from "~/hooks/useClickOutside";
+import useIsDark from "~/hooks/useIsDark";
+import useIsClient from "~/hooks/useIsClient";
+import useIsMobile from "~/hooks/useIsMobile";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const HeaderNavigation: React.FC = () => {
-  const currentTheme = useSelector((state: RootState) => state.theme.isDark);
-  const isMobile = useSelector((state: RootState) => state.isMobile.value);
-  const isTablet = useSelector((state: RootState) => state.isMobile.isTablet);
+  const dispatch = useDispatch();
+  const navLinks = getNavLinks();
+  const isClient = useIsClient();
+  const { isMobile, isTablet } = useIsMobile();
   const currentNavLink = useSelector(
     (state: RootState) => state.currentNavLink.navLink
   );
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-  const isDark = isClient && currentTheme;
-  const dispatch = useDispatch();
-  const navLinks = getNavLinks();
   const ref = useClickOutside(() => setShowDropdown(false));
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const mobileSize = window.innerWidth <= 768;
-      const tabletSize = window.innerWidth <= 1024;
-
-      if (mobileSize) {
-        dispatch(setIsMobile(mobileSize));
-        dispatch(setIsTablet(false));
-      } else if (tabletSize) {
-        dispatch(setIsMobile(false));
-        dispatch(setIsTablet(tabletSize));
-      } else {
-        dispatch(setIsMobile(false));
-        dispatch(setIsTablet(false));
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [dispatch]);
+  const isDark = useIsDark();
 
   const navText = `${
     isMobile
@@ -67,8 +41,22 @@ const HeaderNavigation: React.FC = () => {
 
   const handleClick = () => setShowDropdown(!showDropdown);
 
-  const handleNavLink = (navLink: string) =>
+  const handleNavLink = (navLink: string) => {
+    const element = document.getElementById(navLink);
+
+    element?.scrollIntoView({ behavior: "smooth" });
     dispatch(setCurrentNavLink(navLink));
+
+    if (navLink === "home") {
+      dispatch(setDirectScrollCount(0));
+    } else if (navLink === "about") {
+      dispatch(setDirectScrollCount(2));
+    } else if (navLink === "portfolio") {
+      dispatch(setDirectScrollCount(4));
+    } else if (navLink === "contact") {
+      dispatch(setDirectScrollCount(6));
+    }
+  };
 
   return (
     <div className="absolute z-10 w-screen">

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { type RootState } from "~/redux/types";
 import HeroSection from "./HeroSection";
@@ -6,15 +5,14 @@ import ParticlesBackground from "~/components/Particles/ParticlesBackground";
 import AboutSection from "./AboutSection";
 import PortfolioSection from "./PortfolioSection";
 import ContactSection from "./ContactSection";
+import FloatingNavigation from "~/components/FloatingNavigation";
+import useIsClient from "~/hooks/useIsClient";
 
 const SectionPages = () => {
+  const isClient = useIsClient();
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
-  const [isClient, setIsClient] = useState(false);
   const isDark = isClient && currentTheme;
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
   return (
     <main
       className={`absolute top-0 h-screen w-screen ${
@@ -22,6 +20,7 @@ const SectionPages = () => {
       }`}
     >
       <div className="relative">
+        <FloatingNavigation />
         <ParticlesBackground />
         <HeroSection />
         <AboutSection />

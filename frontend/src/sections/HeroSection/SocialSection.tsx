@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
 import FacebookIcon from "~/shared/icons/FacebookIcon";
 import GithubIcon from "~/shared/icons/GithubIcon";
 import LinkedInIcon from "~/shared/icons/LinkedInIcon";
-import { useSelector, useDispatch } from "react-redux";
-import { type RootState } from "~/redux/types";
+import { useDispatch } from "react-redux";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import Link from "next/link";
-import { Link as ScrollLink} from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import useIsDark from "~/hooks/useIsDark";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const SocialSection = () => {
   const dispatch = useDispatch();
-  const currentTheme = useSelector((state: RootState) => state.theme.isDark);
-  const [isClient, setIsClient] = useState(false);
-  const isDark = currentTheme && isClient;
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isDark = useIsDark();
 
   const topLogoStyle = ` ${
     isDark ? "bg-dark" : "bg-light"
@@ -43,6 +37,7 @@ const SocialSection = () => {
 
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
+    dispatch(setDirectScrollCount(2));
   };
   return (
     <div className="absolute bottom-0 h-20 w-full">
