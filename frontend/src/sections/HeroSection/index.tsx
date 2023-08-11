@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { type RootState } from "~/redux/types";
 import SocialSection from "./SocialSection";
 import useIsClient from "~/hooks/useIsClient";
+import { motion } from "framer-motion";
+import useIsMobile from "~/hooks/useIsMobile";
+import { Link as ScrollLink } from "react-scroll";
+import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import { setScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const HeroSection = () => {
+  const dispatch = useDispatch();
   const isClient = useIsClient();
   const title1 = `I'M&nbsp;ELYRIC&nbsp;MANATAD`;
   const title2 = `I&apos;M&nbsp;A&nbsp;WEB&nbsp;DEVELOPER`;
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
   const isDark = isClient && currentTheme;
   const [currentTitle, setCurrentTitle] = useState(title1);
+  const { isMobile, isTablet } = useIsMobile();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,10 +28,27 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [title1, title2]);
 
+  const handleClick = (navLink: string) => {
+    dispatch(setCurrentNavLink(navLink));
+    dispatch(setScrollCount(4));
+  };
   return (
     <>
       <div id="home" className="relative flex h-screen w-full items-center">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 transform">
+        <motion.div
+          initial={{
+            opacity: 0,
+            x: 300,
+            y: isMobile ? "-30vh" : isTablet ? "-40vh" : "-40vh",
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            y: isMobile ? "-30vh" : isTablet ? "-40vh" : "-40vh",
+          }}
+          transition={{ duration: 0.7 }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 transform"
+        >
           <Image
             src={`${isDark ? "/hexaProfileDark.png" : "/hexaProfileLight.png"}`}
             alt="profile"
@@ -32,9 +56,14 @@ const HeroSection = () => {
             height={700}
             layout="fixed"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex h-full w-full min-w-[420px] items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex h-full w-full min-w-[420px] items-center"
+        >
           <div
             className={`${
               isDark
@@ -79,19 +108,30 @@ const HeroSection = () => {
               experiences to life. Take a journey through my projects and
               let&apos;s connect to build something awesome together!
             </h2>
-            <div className="flex justify-center">
-              <input
-                type="button"
-                className={`text-md mt-12 cursor-pointer rounded-md transition-all duration-300 ${
-                  isDark
-                    ? "bg-dark text-black25 shadow-gray-400 hover:shadow-gray-300"
-                    : "bg-light text-gray-50 shadow-gray-600 hover:shadow-gray-700"
-                }  px-8 py-3 shadow-md hover:shadow-md lg:text-lg`}
-                value="SEE MY WORKS"
-              />
-            </div>
+            <ScrollLink
+              to="portfolio"
+              smooth={true}
+              duration={1500}
+              onClick={() => handleClick("portfolio")}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 1.0 }}
+                className="flex justify-center"
+              >
+                <input
+                  type="button"
+                  className={`text-md mt-12 cursor-pointer rounded-md transition-all duration-300 ${
+                    isDark
+                      ? "bg-dark text-black25 shadow-gray-400 hover:shadow-gray-300"
+                      : "bg-light text-gray-50 shadow-gray-600 hover:shadow-gray-700"
+                  }  px-8 py-3 shadow-md hover:shadow-md lg:text-lg`}
+                  value="SEE MY WORKS"
+                />
+              </motion.div>
+            </ScrollLink>
           </div>
-        </div>
+        </motion.div>
         <SocialSection />
       </div>
     </>

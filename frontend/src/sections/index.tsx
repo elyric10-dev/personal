@@ -7,6 +7,7 @@ import PortfolioSection from "./PortfolioSection";
 import ContactSection from "./ContactSection";
 import FloatingNavigation from "~/components/FloatingNavigation";
 import useIsClient from "~/hooks/useIsClient";
+import { AnimatePresence } from "framer-motion";
 
 const SectionPages = () => {
   const isClient = useIsClient();
@@ -19,14 +20,16 @@ const SectionPages = () => {
         isDark ? "bg-black25" : "bg-gray-50"
       }`}
     >
-      <div className="relative">
-        <FloatingNavigation />
-        <ParticlesBackground />
-        <HeroSection />
-        <AboutSection />
-        <PortfolioSection />
-        <ContactSection isDark={isDark} />
-      </div>
+      <AnimatePresence>
+        <div className="relative">
+          <FloatingNavigation />
+          <ParticlesBackground />
+          <HeroSection />
+          <AboutSection />
+          <PortfolioSection />
+          <ContactSection isDark={isDark} />
+        </div>
+      </AnimatePresence>
     </main>
   );
 };

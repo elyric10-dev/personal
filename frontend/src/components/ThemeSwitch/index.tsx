@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { toogleTheme } from "~/redux/features/switchThemeSlice";
 import useIsDark from "~/hooks/useIsDark";
 import useIsMobile from "~/hooks/useIsMobile";
+import { motion } from "framer-motion";
 
 interface SwitchThemeProps {
   className?: string;
@@ -17,7 +18,9 @@ const ThemeSwitch: React.FC<SwitchThemeProps> = ({
   const { isMobile } = useIsMobile();
 
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 1.0 }}
       onClick={() => dispatch(toogleTheme())}
       className={` ${className || ""} ${
         isDark ? "bg-white py-3 text-black25" : "bg-black25 py-3 text-white"
@@ -44,7 +47,7 @@ const ThemeSwitch: React.FC<SwitchThemeProps> = ({
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 
