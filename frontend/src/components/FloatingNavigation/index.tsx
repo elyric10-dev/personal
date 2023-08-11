@@ -6,6 +6,7 @@ import { Link as ScrollLink } from "react-scroll";
 import getNavLinks from "~/shared/utils/getNavLinks";
 import useMouseScroll from "~/hooks/useMouseScroll";
 import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
+import { motion } from "framer-motion";
 
 const FloatingNavigation = () => {
   const dispatch = useDispatch();
@@ -34,18 +35,14 @@ const FloatingNavigation = () => {
     }
   };
 
-  const handleNav = (navLink: string): void => {
-    dispatch(setCurrentNavLink(navLink));
+  const handleNav = (currentNavLink: string): void => {
+    dispatch(setCurrentNavLink(currentNavLink));
 
-    if (navLink === "home") {
-      dispatch(setDirectScrollCount(0));
-    } else if (navLink === "about") {
-      dispatch(setDirectScrollCount(2));
-    } else if (navLink === "portfolio") {
-      dispatch(setDirectScrollCount(4));
-    } else if (navLink === "contact") {
-      dispatch(setDirectScrollCount(6));
-    }
+    navLinks.forEach((navLink) => {
+      if (navLink.id === currentNavLink) {
+        dispatch(setDirectScrollCount(navLink.scrollCount));
+      }
+    });
   };
 
   useEffect(() => {
@@ -71,21 +68,14 @@ const FloatingNavigation = () => {
               onMouseLeave={() => handleHover(navLink.id)}
             >
               {hoveredNavLink === navLink.id && isHovered && (
-                <div
-                  className={`absolute ${
-                    index === 0
-                      ? "-left-14"
-                      : index === 1
-                      ? "-left-[60px]"
-                      : index === 2
-                      ? "-left-[84px]"
-                      : index === 3
-                      ? "-left-[74px]"
-                      : "-left-20"
-                  } top-10 rounded-lg bg-black25 bg-opacity-80 p-2 text-xs text-gray-50`}
+                <motion.div
+                  initial={{ opacity: 0, x: -100, y: 10 }}
+                  animate={{ opacity: 1, x: -100, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className={`absolute -right-[55px] top-10 rounded-lg bg-black25 bg-opacity-80 p-2 text-center text-xs text-gray-50`}
                 >
                   {navLink.label}
-                </div>
+                </motion.div>
               )}
             </div>
           </ScrollLink>

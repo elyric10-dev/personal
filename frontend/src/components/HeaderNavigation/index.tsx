@@ -12,6 +12,8 @@ import useIsDark from "~/hooks/useIsDark";
 import useIsClient from "~/hooks/useIsClient";
 import useIsMobile from "~/hooks/useIsMobile";
 import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
+import { motion } from "framer-motion";
+import SlidingElement from "~/animations/SlidingElement";
 
 const HeaderNavigation: React.FC = () => {
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ const HeaderNavigation: React.FC = () => {
   };
 
   return (
-    <div className="absolute z-10 w-screen">
+    <div className="fixed z-10 w-screen">
       <header
         className={`relative flex justify-between p-4 backdrop-blur-[1.5px] md:p-8`}
       >
@@ -83,14 +85,18 @@ const HeaderNavigation: React.FC = () => {
 
         {/* BURGER ICON  */}
         {isMobile ? (
-          <div className="flex items-center">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1.0 }}
+            className="flex items-center"
+          >
             <div
               onClick={handleClick}
               className="cursor-pointer rounded-full border bg-gray-100 p-2 shadow-md"
             >
               <BurgerIcon classname="w-7" />
             </div>
-          </div>
+          </motion.div>
         ) : (
           ""
         )}
@@ -106,32 +112,40 @@ const HeaderNavigation: React.FC = () => {
         >
           {isMobile && showDropdown && (
             <>
-              <div
-                className={` ${
-                  isMobile
-                    ? isDark
-                      ? "bg-black25 text-gray-50"
-                      : "rounded-tl-lg bg-gray-50 text-black25"
-                    : ""
-                }`}
+              <SlidingElement
+                fromOpacity={0}
+                toOpacity={1}
+                fromX={150}
+                toX={0}
+                duration={0.2}
               >
-                <ul className="">
-                  {navLinks.map((navLink, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleNavLink(navLink.id)}
-                      className={`${navText} ${
-                        index === 0 && "relative rounded-tl-lg"
-                      } ${isLinkActive(navLink.id) && activeLink}`}
-                    >
-                      <div>{navLink.label}</div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <ThemeSwitch />
-              </div>
+                <div
+                  className={` ${
+                    isMobile
+                      ? isDark
+                        ? "bg-black25 text-gray-50"
+                        : "rounded-tl-lg bg-gray-50 text-black25"
+                      : ""
+                  }`}
+                >
+                  <ul className="">
+                    {navLinks.map((navLink, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handleNavLink(navLink.id)}
+                        className={`${navText} ${
+                          index === 0 && "relative rounded-tl-lg"
+                        } ${isLinkActive(navLink.id) && activeLink}`}
+                      >
+                        <div>{navLink.label}</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <ThemeSwitch />
+                </div>
+              </SlidingElement>
             </>
           )}
           {!isMobile && (
@@ -168,7 +182,7 @@ const HeaderNavigation: React.FC = () => {
                   ))}
                 </ul>
               </div>
-              <div className="">
+              <div>
                 <ThemeSwitch className="relative flex cursor-pointer justify-center rounded-xl" />
               </div>
             </>
