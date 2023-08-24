@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import BurgerIcon from "~/shared/icons/BurgerIcon";
 import { type RootState } from "~/redux/types";
 import getNavLinks from "~/shared/utils/getNavLinks";
-import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import useClickOutside from "~/hooks/useClickOutside";
 import useIsDark from "~/hooks/useIsDark";
 import useIsClient from "~/hooks/useIsClient";
 import useIsMobile from "~/hooks/useIsMobile";
-import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 import { motion } from "framer-motion";
 import SlidingElement from "~/animations/SlidingElement";
+import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import useMouseScroll from "~/hooks/useMouseScroll";
 
 const HeaderNavigation: React.FC = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const HeaderNavigation: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const ref = useClickOutside(() => setShowDropdown(false));
   const isDark = useIsDark();
+  const mouseScroll = useMouseScroll();
 
   const navText = `${
     isMobile
@@ -45,23 +46,22 @@ const HeaderNavigation: React.FC = () => {
 
   const handleNavLink = (navLink: string) => {
     const element = document.getElementById(navLink);
-
-    element?.scrollIntoView({ behavior: "smooth" });
     dispatch(setCurrentNavLink(navLink));
 
-    if (navLink === "home") {
-      dispatch(setDirectScrollCount(0));
-    } else if (navLink === "about") {
-      dispatch(setDirectScrollCount(2));
-    } else if (navLink === "portfolio") {
-      dispatch(setDirectScrollCount(4));
-    } else if (navLink === "contact") {
-      dispatch(setDirectScrollCount(6));
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <div className="fixed z-10 w-screen">
+    <motion.div
+      animate={{
+        y: mouseScroll >= 1 ? (isMobile ? -105 : -120) : 0,
+      }}
+      whileHover={{ y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed z-10 w-full max-w-[1920px]"
+    >
       <header
         className={`relative flex justify-between p-4 backdrop-blur-[1.5px] md:p-8`}
       >
@@ -94,7 +94,7 @@ const HeaderNavigation: React.FC = () => {
               onClick={handleClick}
               className="cursor-pointer rounded-full border bg-gray-100 p-2 shadow-md"
             >
-              <BurgerIcon classname="w-7" />
+              <BurgerIcon className="w-7" />
             </div>
           </motion.div>
         ) : (
@@ -189,7 +189,7 @@ const HeaderNavigation: React.FC = () => {
           )}
         </div>
       </header>
-    </div>
+    </motion.div>
   );
 };
 

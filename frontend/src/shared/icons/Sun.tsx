@@ -1,21 +1,17 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from "react";
+import { type IconProp } from "~/shared/utils/types";
 
-interface Props {
-  classname?: string;
-  width?: number;
-  height?: number;
-}
-
-const SunIcon: React.FC<Props> = ({ classname, width, height }: Props) => {
+const SunIcon = ({ className, width, height }: IconProp) => {
+  const widthValue = typeof width === "number" ? `${width}px` : width;
+  const heightValue = typeof height === "number" ? `${height}px` : height;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={`${width}px`}
-      height={`${height}px`}
+      width={widthValue}
+      height={heightValue}
       viewBox="0 0 24 24"
       fill="none"
-      className={classname}
+      className={className}
     >
       <g
         clip-path="url(#a)"

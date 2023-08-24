@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  overflow: hidden;
-}
-
 .flex-2 {
   flex: 2;
 }
@@ -20,6 +16,12 @@ body {
 }
 .trans {
   transition: 0.5s;
+}
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .drop {

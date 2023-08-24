@@ -1,13 +1,7 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from "react";
+import { type IconProp } from "~/shared/utils/types";
 
-interface Props {
-  className?: string;
-  width?: number;
-  height?: number;
-}
-
-const MoonIcon: React.FC<Props> = ({ className, width, height }: Props) => {
+const MoonIcon = ({ className, width, height }: IconProp) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

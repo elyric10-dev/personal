@@ -1,10 +1,9 @@
 import FacebookIcon from "~/shared/icons/FacebookIcon";
-import GithubIcon from "~/shared/icons/GithubIcon";
+import GithubIcon from "~/shared/icons/techStacks/GithubIcon";
 import LinkedInIcon from "~/shared/icons/LinkedInIcon";
 import { useDispatch } from "react-redux";
 import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import useIsDark from "~/hooks/useIsDark";
 import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
@@ -38,6 +37,8 @@ const SocialSection = () => {
   const handleNav = (currentNavLink: string): void => {
     dispatch(setCurrentNavLink(currentNavLink));
     dispatch(setDirectScrollCount(2));
+    const element = document.getElementById(currentNavLink);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="absolute bottom-0 h-20 w-full">
@@ -56,14 +57,9 @@ const SocialSection = () => {
             </Link>
           ))}
         </ul>
-        <ScrollLink
-          onClick={() => handleNav("about")}
-          to="about"
-          smooth={true}
-          duration={500}
-        >
+        <div onClick={() => handleNav("about")}>
           <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
-        </ScrollLink>
+        </div>
       </div>
     </div>
   );
