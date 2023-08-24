@@ -13,22 +13,21 @@ const SectionPages = () => {
   const isClient = useIsClient();
   const currentTheme = useSelector((state: RootState) => state.theme.isDark);
   const isDark = isClient && currentTheme;
-
   return (
     <main
-      className={`absolute top-0 h-screen w-screen ${
+      className={`absolute top-0 h-screen w-full max-w-[1920px] overflow-auto scrollbar-hide ${
         isDark ? "bg-black25" : "bg-gray-50"
       }`}
     >
       <AnimatePresence>
-        <div className="relative">
+        <section className="relative h-full w-full overflow-auto scroll-smooth scrollbar-hide">
           <FloatingNavigation />
           <ParticlesBackground />
           <HeroSection />
           <AboutSection />
           <PortfolioSection />
           <ContactSection isDark={isDark} />
-        </div>
+        </section>
       </AnimatePresence>
     </main>
   );

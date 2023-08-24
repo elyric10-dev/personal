@@ -1,30 +1,35 @@
 import React from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
-import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
-import { useDispatch } from "react-redux";
-import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
+import useIsDark from "~/hooks/useIsDark";
+import useIsMobile from "~/hooks/useIsMobile";
+import ProfileCard from "./ProfileCard";
+import AboutMeSection from "./AboutMeSection";
+import DetectCurrentPage from "~/components/DetectCurrentPage";
 
 const AboutSection = () => {
-  const dispatch = useDispatch();
-  const handleNav = (currentNavLink: string): void => {
-    dispatch(setCurrentNavLink(currentNavLink));
-    dispatch(setDirectScrollCount(4));
-  };
+  const isDark = useIsDark();
+  const { isMobile, isTablet } = useIsMobile();
+  const isDesktop = !isMobile && !isTablet;
   return (
-    <div id="about" className="relative h-screen w-full bg-green-300">
-      ABOUT SECTION
-      <div className="absolute bottom-0 h-20 w-full">
-        <ScrollLink
-          onClick={() => handleNav("portfolio")}
-          to="portfolio"
-          smooth={true}
-          duration={500}
+    <>
+      <div
+        id="about"
+        className={`relative flex w-full ${
+          isMobile || isTablet ? "flex-col" : "flex-row"
+        } ${isDesktop ? "h-full" : ""}`}
+      >
+        <DetectCurrentPage topPageId="home" currentPageId="about" />
+
+        <ProfileCard isDark={isDark} />
+
+        <div
+          className={`${isDark ? "bg-dark" : "bg-light"} ${
+            isMobile ? "" : "flex-2 grid place-items-center"
+          } h-full min-w-[300px] max-w-[940px] bg-opacity-80`}
         >
-          <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
-        </ScrollLink>
+          <AboutMeSection isMobile={isMobile} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

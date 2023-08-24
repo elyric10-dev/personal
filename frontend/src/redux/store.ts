@@ -3,6 +3,8 @@ import switchThemeSlice from "./features/switchThemeSlice";
 import isMobileSlice from "./features/isMobileSlice";
 import currentNavLinkSlice from "./features/currentNavLinkSlice";
 import mouseScrollSlice from "./features/mouseScrollSlice";
+import portfolioBottomSheetSlice from "./features/portfolioBottomSheetSlice";
+import isCarouselSlice from "./features/isCarouselSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +12,8 @@ const store = configureStore({
     isMobile: isMobileSlice,
     currentNavLink: currentNavLinkSlice,
     mouseScroll: mouseScrollSlice,
+    portfolioBottomSheet: portfolioBottomSheetSlice,
+    isCarousel: isCarouselSlice,
   },
 });
 

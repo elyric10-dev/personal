@@ -6,9 +6,7 @@ import SocialSection from "./SocialSection";
 import useIsClient from "~/hooks/useIsClient";
 import { motion } from "framer-motion";
 import useIsMobile from "~/hooks/useIsMobile";
-import { Link as ScrollLink } from "react-scroll";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
-import { setScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const HeroSection = () => {
   const dispatch = useDispatch();
@@ -30,11 +28,16 @@ const HeroSection = () => {
 
   const handleClick = (navLink: string) => {
     dispatch(setCurrentNavLink(navLink));
-    dispatch(setScrollCount(4));
+    const element = document.getElementById(navLink);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <>
-      <div id="home" className="relative flex h-screen w-full items-center">
+      <div
+        id="home"
+        className="relative flex h-full w-full items-center overflow-hidden"
+      >
         <motion.div
           initial={{
             opacity: 0,
@@ -67,7 +70,7 @@ const HeroSection = () => {
           <div
             className={`${
               isDark
-                ? "bg-black25 bg-opacity-60 p-4 shadow-gray-500 backdrop-blur-[5px]"
+                ? "bg-black25 bg-opacity-50 p-4 shadow-gray-500 backdrop-blur-[5px]"
                 : "bg-gray-50 bg-opacity-40 p-4 shadow-gray-600 backdrop-blur-[5px]"
             } mx-6 grid max-w-[436px] gap-1 rounded-xl border shadow-md md:max-w-[600px] md:gap-2 lg:max-w-[720px] lg:gap-4 xl:max-w-[920px]`}
           >
@@ -108,28 +111,22 @@ const HeroSection = () => {
               experiences to life. Take a journey through my projects and
               let&apos;s connect to build something awesome together!
             </h2>
-            <ScrollLink
-              to="portfolio"
-              smooth={true}
-              duration={1500}
-              onClick={() => handleClick("portfolio")}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 1.0 }}
+              className="flex justify-center"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 1.0 }}
-                className="flex justify-center"
-              >
-                <input
-                  type="button"
-                  className={`text-md mt-12 cursor-pointer rounded-md transition-all duration-300 ${
-                    isDark
-                      ? "bg-dark text-black25 shadow-gray-400 hover:shadow-gray-300"
-                      : "bg-light text-gray-50 shadow-gray-600 hover:shadow-gray-700"
-                  }  px-8 py-3 shadow-md hover:shadow-md lg:text-lg`}
-                  value="SEE MY WORKS"
-                />
-              </motion.div>
-            </ScrollLink>
+              <input
+                onClick={() => handleClick("portfolio")}
+                type="button"
+                className={`text-md mt-12 cursor-pointer rounded-md transition-all duration-300 ${
+                  isDark
+                    ? "bg-dark text-black25 shadow-gray-400 hover:shadow-gray-300"
+                    : "bg-light text-gray-50 shadow-gray-600 hover:shadow-gray-700"
+                }  px-8 py-3 shadow-md hover:shadow-md lg:text-lg`}
+                value="SEE MY WORKS"
+              />
+            </motion.div>
           </div>
         </motion.div>
         <SocialSection />

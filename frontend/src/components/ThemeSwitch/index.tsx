@@ -32,7 +32,7 @@ const ThemeSwitch: React.FC<SwitchThemeProps> = ({
           <div className="flex cursor-pointer px-3">
             {isMobile && <span>LightMode</span>}
             <div className={`${isMobile ? "pl-2" : ""}`}>
-              <SunIcon width={23} height={23} classname="rounded-full" />
+              <SunIcon width={23} height={23} className="rounded-full" />
             </div>
           </div>
         </>

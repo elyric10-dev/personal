@@ -1,19 +1,13 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from "react";
+import { type IconProp } from "~/shared/utils/types";
 
-interface Props {
-  classname?: string;
-  width?: number;
-  height?: number;
-}
-
-const BurgerIcon: React.FC<Props> = ({ classname, width, height }: Props) => {
+const BurgerIcon = ({ className, width, height }: IconProp) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      className={classname}
+      className={className}
       width={width}
       height={height}
     >
