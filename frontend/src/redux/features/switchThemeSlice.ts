@@ -5,15 +5,17 @@ export interface themeState {
 }
 
 const getInitialThemeState = (): themeState => {
+  let isDark = true; // Default to dark mode
+
   if (typeof window !== "undefined") {
     const theme = localStorage.getItem("theme");
-
-    return {
-      isDark: theme === "dark" ? true : false,
-    };
+    if (theme === "light") {
+      isDark = false;
+    }
   }
+
   return {
-    isDark: false,
+    isDark: isDark,
   };
 };
 

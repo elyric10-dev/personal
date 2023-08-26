@@ -1,25 +1,13 @@
-import { type projectImagesLinkProps, type techStacksProp } from "./types";
-import { type projectDescription } from "./types";
-
-export type portfolioDataProp = {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  projectDescription: projectDescription[];
-  projectImagesLink: projectImagesLinkProps[];
-  techStacks: techStacksProp[];
-  otherTechStacks: techStacksProp[];
-};
+import { type portfolioDataProp } from "./types";
 
 const getPortfolioData = (): portfolioDataProp[] => {
   return [
     {
       id: 1,
       title: "Iskawt System",
-      image: "/bg.jpg",
+      image: "/is1.png",
       description:
-        "One of the project in my school. The Iskawt System is a comprehensive administrative control system designed to manage user applications.",
+        "One of the project in our school. The Iskawt System is an administrative control system designed to manage user applications.",
       projectDescription: [
         {
           id: 1,
@@ -67,25 +55,70 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/p1.jpg",
+          link: "/is1.png",
         },
         {
           id: 2,
-          link: "/p1.jpg",
+          link: "/is2.png",
         },
         {
           id: 3,
-          link: "/p1.jpg",
+          link: "/is3.png",
         },
         {
           id: 4,
-          link: "/p1.jpg",
+          link: "/is4.png",
         },
         {
           id: 5,
-          link: "/p1.jpg",
+          link: "/is5.png",
+        },
+        {
+          id: 6,
+          link: "/is6.png",
+        },
+        {
+          id: 7,
+          link: "/is7.png",
+        },
+        {
+          id: 8,
+          link: "/is8.png",
+        },
+        {
+          id: 9,
+          link: "/is9.png",
+        },
+        {
+          id: 10,
+          link: "/is10.png",
+        },
+        {
+          id: 11,
+          link: "/is11.png",
+        },
+        {
+          id: 12,
+          link: "/is12.png",
+        },
+        {
+          id: 13,
+          link: "/is13.png",
+        },
+        {
+          id: 14,
+          link: "/is14.png",
+        },
+        {
+          id: 15,
+          link: "/is15.png",
+        },
+        {
+          id: 16,
+          link: "/is16.png",
         },
       ],
+      projectGithubLink: "https://github.com/elyric10-dev/iskawt-system",
       techStacks: [
         {
           id: 1,
@@ -133,10 +166,10 @@ const getPortfolioData = (): portfolioDataProp[] => {
     },
     {
       id: 2,
-      title: "ELS / E-Learning System",
-      image: "/bg.jpg",
+      title: "E-Learning System",
+      image: "/els1.png",
       description:
-        "The ELS (E-Learning System) is an E-learning platform designed to provide users with an interactive for enhancing their knowledge. This project focuses on users to answer variants of categories, track their performance, save answered questions, and connect with fellow learners.",
+        "This was my first React and Laravel API project that was base on my training on my previous company before transfering me to the other project and collaborate with other developers. And about the project the ELS (E-Learning System) is an E-learning platform designed to provide users with an interactive for enhancing their knowledge. This project focuses on users to answer variants of categories, track their performance, save answered questions, and connect with fellow learners.",
       projectDescription: [
         {
           id: 1,
@@ -184,25 +217,70 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/p2.jpg",
+          link: "/els1.png",
         },
         {
           id: 2,
-          link: "/p2.jpg",
+          link: "/els2.png",
         },
         {
           id: 3,
-          link: "/p2.jpg",
+          link: "/els3.png",
         },
         {
           id: 4,
-          link: "/p2.jpg",
+          link: "/els4.png",
         },
         {
           id: 5,
-          link: "/p2.jpg",
+          link: "/els5.png",
+        },
+        {
+          id: 6,
+          link: "/els6.png",
+        },
+        {
+          id: 7,
+          link: "/els7.png",
+        },
+        {
+          id: 8,
+          link: "/els8.png",
+        },
+        {
+          id: 9,
+          link: "/els9.png",
+        },
+        {
+          id: 10,
+          link: "/els10.png",
+        },
+        {
+          id: 11,
+          link: "/els11.png",
+        },
+        {
+          id: 12,
+          link: "/els12.png",
+        },
+        {
+          id: 13,
+          link: "/els13.png",
+        },
+        {
+          id: 14,
+          link: "/els14.png",
+        },
+        {
+          id: 15,
+          link: "/els15.png",
+        },
+        {
+          id: 16,
+          link: "/els16.png",
         },
       ],
+      projectGithubLink: "https://github.com/elyric10-dev/e-learning-system",
       techStacks: [
         {
           id: 1,
@@ -241,9 +319,9 @@ const getPortfolioData = (): portfolioDataProp[] => {
     {
       id: 3,
       title: "Messenger Clone App",
-      image: "/bg.jpg",
+      image: "/CMA3.jpg",
       description:
-        "The Facebook Messenger Clone App represents a recreated user interface that mirrors the familiar Messenger application from Meta. This project focuses on the visual presentation and structure of the Messenger app.",
+        "This project is only for upskilling, because one of our team leader instructed us to practice or upskill in Flutter and Firebase firestore because we have upcoming mobile development project, but I didn't finish it due of transfering to simulation project. However about this project is the Facebook Messenger Clone App represents a recreated or replicated and improvised user interface that Meta messenger doesn't have. This project focuses on the visual presentation and structure of the Messenger app.",
       projectDescription: [
         {
           id: 1,
@@ -279,25 +357,50 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/p3.jpg",
+          link: "/CMA1.jpg",
         },
         {
           id: 2,
-          link: "/p3.jpg",
+          link: "/CMA2.jpg",
         },
         {
           id: 3,
-          link: "/p3.jpg",
+          link: "/CMA3.jpg",
         },
         {
           id: 4,
-          link: "/p3.jpg",
+          link: "/CMA4.jpg",
         },
         {
           id: 5,
-          link: "/p3.jpg",
+          link: "/CMA5.jpg",
+        },
+        {
+          id: 6,
+          link: "/CMA6.jpg",
+        },
+        {
+          id: 7,
+          link: "/CMA7.jpg",
+        },
+        {
+          id: 8,
+          link: "/CMA8.jpg",
+        },
+        {
+          id: 9,
+          link: "/CMA9.jpg",
+        },
+        {
+          id: 10,
+          link: "/CMA10.jpg",
+        },
+        {
+          id: 11,
+          link: "/CMA11.jpg",
         },
       ],
+      projectGithubLink: "",
       techStacks: [
         {
           id: 1,
@@ -320,10 +423,10 @@ const getPortfolioData = (): portfolioDataProp[] => {
     },
     {
       id: 4,
-      title: "LMS / Learning Mananement System",
-      image: "/bg.jpg",
+      title: "Learning Mananement System",
+      image: "/lms2.png",
       description:
-        "Is a specialized platform tailored for members of my previous company emails only. Accessible exclusively through authorized Google email addresses, this system serves as a hub for employees seeking to enhance their skills and manage their learning journeys.",
+        "It was the first project that I was collaborating with some of the developers. From this project is I learned a lot about developing a website because we have a code reviewer and that's our seniors. And about this project it is a specialized platform tailored for members of my previous company emails only. Accessible exclusively through authorized Google email addresses, this system serves as a hub for employees seeking to enhance their skills and manage their learning journeys.",
       projectDescription: [
         {
           id: 1,
@@ -365,25 +468,42 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/p4.jpg",
+          link: "/lms1.png",
         },
         {
           id: 2,
-          link: "/p4.jpg",
+          link: "/lms2.png",
         },
         {
           id: 3,
-          link: "/p4.jpg",
+          link: "/lms3.png",
         },
         {
           id: 4,
-          link: "/p4.jpg",
+          link: "/lms4.png",
         },
         {
           id: 5,
-          link: "/p4.jpg",
+          link: "/lms5.png",
+        },
+        {
+          id: 6,
+          link: "/lms6.png",
+        },
+        {
+          id: 7,
+          link: "/lms7.png",
+        },
+        {
+          id: 8,
+          link: "/lms8.png",
+        },
+        {
+          id: 9,
+          link: "/lms9.png",
         },
       ],
+      projectGithubLink: "https://github.com/framgia/sph-lms",
       techStacks: [
         {
           id: 1,
@@ -409,11 +529,6 @@ const getPortfolioData = (): portfolioDataProp[] => {
           id: 5,
           icon: "nextjs",
           name: "Next JS",
-        },
-        {
-          id: 6,
-          icon: "javascript",
-          name: "JavaScript",
         },
       ],
       otherTechStacks: [
@@ -475,25 +590,26 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/p5.jpg",
+          link: "/bg.jpg",
         },
         {
           id: 2,
-          link: "/p5.jpg",
+          link: "/bg.jpg",
         },
         {
           id: 3,
-          link: "/p5.jpg",
+          link: "/bg.jpg",
         },
         {
           id: 4,
-          link: "/p5.jpg",
+          link: "/bg.jpg",
         },
         {
           id: 5,
-          link: "/p5.jpg",
+          link: "/bg.jpg",
         },
       ],
+      projectGithubLink: "https://github.com/elyric10-dev/personal",
       techStacks: [
         {
           id: 1,

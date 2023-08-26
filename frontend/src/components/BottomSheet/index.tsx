@@ -4,6 +4,7 @@ import useClickOutside from "~/hooks/useClickOutside";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsVisible } from "~/redux/features/portfolioBottomSheetSlice";
 import { type RootState } from "~/redux/types";
+import useIsDark from "~/hooks/useIsDark";
 
 type bottomSheetProp = {
   children: React.ReactNode;
@@ -14,6 +15,8 @@ const BottomSheet = ({ children }: bottomSheetProp) => {
     (state: RootState) => state.portfolioBottomSheet.isVisible
   );
   const ref = useClickOutside(() => dispatch(setIsVisible(false)));
+  const isDark = useIsDark();
+
   return (
     <React.Fragment>
       <AnimatePresence>
@@ -35,7 +38,9 @@ const BottomSheet = ({ children }: bottomSheetProp) => {
                 },
               }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-0 z-20 h-3/4 max-h-[720px] w-full max-w-[1920px] overflow-y-scroll rounded-t-3xl bg-gray-100 px-2 pt-2 scrollbar-hide"
+              className={`${
+                isDark ? "bg-cyan-950" : "bg-[#fff5f0]"
+              } fixed bottom-0 z-20 h-3/4 max-h-[720px] w-full max-w-[1920px] overflow-y-scroll rounded-t-3xl px-2 pt-2 scrollbar-hide`}
             >
               <div className="h-full w-full overflow-y-scroll rounded-t-2xl scrollbar-hide">
                 {children}
