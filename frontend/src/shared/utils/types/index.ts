@@ -24,3 +24,25 @@ export type projectDescription = {
   title: string;
   description: string;
 };
+
+export type portfolioDataProp = {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+  projectDescription: projectDescription[];
+  projectImagesLink: projectImagesLinkProps[];
+  projectGithubLink: string;
+  techStacks: techStacksProp[];
+  otherTechStacks: techStacksProp[];
+};
+
+export type portfolioCardProps = {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+  onCardClick: (id: number) => void;
+  techStackIcon: techStacksProp[];
+  projectGithubLink: string;
+};

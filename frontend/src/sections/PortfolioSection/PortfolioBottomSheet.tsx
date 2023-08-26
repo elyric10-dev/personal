@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BottomSheet from "~/components/BottomSheet";
 import ProgressList from "~/components/ProgressList";
-import getPortfolioData, {
-  type portfolioDataProp,
-} from "~/shared/utils/getPortfolioData";
+import getPortfolioData from "~/shared/utils/getPortfolioData";
 import useIsMobile from "~/hooks/useIsMobile";
 import TechStacks from "./TechStacks";
 import CarouselPreview from "./CarouselPreview";
+import useIsDark from "~/hooks/useIsDark";
 import { type selectedCardIdProp } from "~/shared/utils/types";
 import { type projectDescription } from "~/shared/utils/types";
+import { type portfolioDataProp } from "~/shared/utils/types";
 
 const portfolioData: portfolioDataProp[] = getPortfolioData();
 
@@ -18,6 +18,7 @@ const PortfolioBottomSheet = ({ selectedCardId }: selectedCardIdProp) => {
 
   const [descriptions, setDescriptions] = useState<projectDescription[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isDark = useIsDark();
 
   useEffect(() => {
     const projectDescriptions =
@@ -39,7 +40,10 @@ const PortfolioBottomSheet = ({ selectedCardId }: selectedCardIdProp) => {
   }, [currentIndex, descriptions]);
   return (
     <BottomSheet>
-      <div className={`${isDesktop ? "" : ""}`}>
+      <div className={`${isDark ? "text-gray-300" : ""} `}>
+        <h1 className="pb-4 pt-2 text-3xl font-semibold">
+          {portfolioData[selectedCardId - 1]?.title}
+        </h1>
         <p className="text-xl font-semibold">Description:</p>
         <div className="border-b border-b-gray-400 py-3">
           <p>{portfolioData[selectedCardId - 1]?.description}</p>
@@ -50,7 +54,7 @@ const PortfolioBottomSheet = ({ selectedCardId }: selectedCardIdProp) => {
           <ul
             className={`${
               isDesktop ? "w-full" : ""
-            } rounded-lg bg-gradient-to-br from-blue-300 via-gray-200 to-dark px-2`}
+            } rounded-lg bg-gradient-to-br px-2`}
           >
             {descriptions.slice(0, currentIndex).map((description, index) => (
               <ProgressList
@@ -68,6 +72,7 @@ const PortfolioBottomSheet = ({ selectedCardId }: selectedCardIdProp) => {
         </div>
 
         {/* CAROUSEL Preview */}
+        <p className="py-3 text-xl font-semibold">Screenshots:</p>
         <CarouselPreview selectedCardId={selectedCardId} />
 
         {(isMobile || isTablet) && (

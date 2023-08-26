@@ -1,7 +1,7 @@
 import React from "react";
 import { type IconProp } from "~/shared/utils/types";
 
-const PhpMyAdminIcon = ({ className, width, height }: IconProp) => {
+const XamppIcon = ({ className, width, height }: IconProp) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,4 +16,4 @@ const PhpMyAdminIcon = ({ className, width, height }: IconProp) => {
   );
 };
 
-export default PhpMyAdminIcon;
+export default XamppIcon;

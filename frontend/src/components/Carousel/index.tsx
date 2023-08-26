@@ -56,18 +56,18 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
 
   return (
     <div className="fixed top-0 z-10 grid h-full w-screen place-items-center bg-black25">
-      <div className="absolute left-0 top-0 flex h-14 w-full items-center">
+      <div className="absolute left-0 top-0 z-10 flex h-14 w-full items-center">
         <div
           onClick={handleClose}
-          className="trans group cursor-default rounded-full px-2 pb-2 text-5xl font-extrabold text-gray-100 hover:bg-gray-500"
+          className="trans group flex cursor-default items-center rounded-full bg-opacity-50 px-2 pb-2 text-5xl font-extrabold text-dark hover:bg-black25"
         >
-          <span className="trans group-hover:text-gray-100">←</span>
+          <span className="">←</span>
         </div>
       </div>
 
       <div
         className={`${
-          isDesktop ? "h-[720px]" : "h-[480px]"
+          isDesktop ? "h-[90%]" : "h-full"
         } relative flex w-full overflow-x-hidden scrollbar-hide`}
       >
         {/* IMAGES  */}
@@ -75,50 +75,50 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
           <div
             key={index}
             id={`image${imageLink.id}`}
-            className={`${
-              isDesktop ? "h-[720px]" : "h-[480px]"
-            } relative w-full flex-shrink-0`}
+            className={`${isDesktop ? "" : ""} relative w-full flex-shrink-0`}
           >
             <Image
               src={imageLink.link}
               alt="portfolio"
               fill
-              objectFit="cover"
+              objectFit="contain"
             />
           </div>
         ))}
 
         {/* NAVIGATION  */}
-        <div className="fixed bottom-0 flex h-16 w-full items-center justify-center">
-          <div className="absolute bottom-1/2 left-2 h-full w-9 translate-y-3/4">
-            <div
-              onClick={() => handlePrevious()}
-              className="trans rotate-90 rounded-full bg-gray-400 hover:bg-gray-200"
-            >
-              <ChevronDarkIcon />
+        <div className="fixed bottom-0 flex h-[5%] w-full items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center gap-3">
+            <div className="relative h-full w-9">
+              <div
+                onClick={() => handlePrevious()}
+                className="trans rotate-90 rounded-full bg-gray-300"
+              >
+                <ChevronDarkIcon />
+              </div>
             </div>
-          </div>
-          <div className="flex h-full items-center gap-2">
-            {portfolioCards[selectedCardId - 1]?.projectImagesLink.map(
-              (imageLink, index) => (
-                <div
-                  key={index}
-                  onClick={() =>
-                    handleGotoImage(imageLink.id, `image${imageLink.id}`)
-                  }
-                  className={`${
-                    currentId === imageLink.id ? "h-4 w-4" : "h-2 w-2"
-                  } trans rounded-full border border-black25 bg-dark`}
-                ></div>
-              )
-            )}
-          </div>
-          <div className="absolute bottom-1/2 right-2 h-full w-9 translate-y-3/4">
-            <div
-              onClick={() => handleNext()}
-              className="trans -rotate-90 rounded-full bg-gray-400 hover:bg-gray-200"
-            >
-              <ChevronDarkIcon />
+            <div className="flex h-full items-center gap-2">
+              {portfolioCards[selectedCardId - 1]?.projectImagesLink.map(
+                (imageLink, index) => (
+                  <div
+                    key={index}
+                    onClick={() =>
+                      handleGotoImage(imageLink.id, `image${imageLink.id}`)
+                    }
+                    className={`${
+                      currentId === imageLink.id ? "h-4 w-4" : "h-2 w-2"
+                    } trans rounded-full border bg-dark`}
+                  ></div>
+                )
+              )}
+            </div>
+            <div className="h-full w-9">
+              <div
+                onClick={() => handleNext()}
+                className="trans -rotate-90 rounded-full bg-gray-300"
+              >
+                <ChevronDarkIcon />
+              </div>
             </div>
           </div>
         </div>

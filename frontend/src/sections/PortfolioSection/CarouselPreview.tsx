@@ -35,11 +35,10 @@ const CarouselPreview = ({ selectedCardId }: selectedCardIdProp) => {
         } relative flex h-80 w-full flex-col overflow-hidden rounded-2xl border`}
       >
         <Image
-          src={
-            portfolioCards[selectedCardId - 1]?.projectImagesLink[0]?.link || ""
-          }
+          src={portfolioCards[selectedCardId - 1]?.image || ""}
           alt="image"
           fill
+          objectFit="cover"
         />
         <div
           onClick={handleCarouselClick}
