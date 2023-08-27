@@ -7,8 +7,6 @@ import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import getPortfolioData from "~/shared/utils/getPortfolioData";
 import useSwipe from "~/hooks/useSwipe";
 import useIsMobile from "~/hooks/useIsMobile";
-import useIsLoading from "~/hooks/useIsLoading";
-import LoadingSpinner from "../LoadingSpinner";
 
 type CarouselProp = {
   selectedCardId: number;
@@ -20,10 +18,6 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
   const carouselImages = portfolioCards[selectedCardId - 1]?.projectImagesLink;
   const { isMobile, isTablet } = useIsMobile();
   const isDesktop = !isMobile && !isTablet;
-  // const { isLoading, handleLoadingComplete } = useIsLoading();
-  const [isLoading, setIsLoading] = useState<boolean[]>(
-    Array(carouselImages?.length).fill(true)
-  );
 
   const handleClose = () => {
     dispatch(setIsCarousel(false));
@@ -60,11 +54,6 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
 
   useSwipe({ onSwipeRight: handleNext, onSwipeLeft: handlePrevious });
 
-  const handleLoadingComplete = (index: number) => {
-    const updatedIsLoading = [...isLoading];
-    updatedIsLoading[index] = true;
-    setIsLoading(updatedIsLoading);
-  };
   return (
     <div className="fixed top-0 z-10 grid h-full w-screen place-items-center bg-black25">
       <div className="absolute left-0 top-0 z-10 flex h-14 w-full items-center">
@@ -88,13 +77,11 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
             id={`image${imageLink.id}`}
             className={`${isDesktop ? "" : ""} relative w-full flex-shrink-0`}
           >
-            {isLoading && <LoadingSpinner />}
             <Image
               src={imageLink.link}
               alt="portfolio"
               fill
               objectFit="contain"
-              onLoadingComplete={() => handleLoadingComplete(index)}
             />
           </div>
         ))}
