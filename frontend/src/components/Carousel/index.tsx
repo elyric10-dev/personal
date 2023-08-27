@@ -7,7 +7,6 @@ import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import getPortfolioData from "~/shared/utils/getPortfolioData";
 import useSwipe from "~/hooks/useSwipe";
 import useIsMobile from "~/hooks/useIsMobile";
-import useIsLoading from "~/hooks/useIsLoading";
 import LoadingSpinner from "../LoadingSpinner";
 
 type CarouselProp = {

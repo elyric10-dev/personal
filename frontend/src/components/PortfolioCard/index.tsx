@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import useIsMobile from "~/hooks/useIsMobile";
