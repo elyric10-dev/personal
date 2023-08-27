@@ -7,6 +7,8 @@ import getPortfolioIcon from "~/hooks/useGetPortfolioIcon";
 import ArrowIcon from "~/shared/icons/ArrowIcon";
 import Link from "next/link";
 import { type portfolioCardProps } from "~/shared/utils/types";
+import ShimmerLoading from "../ShimmerLoading";
+import useIsLoading from "~/hooks/useIsLoading";
 
 const PortfolioCard = ({
   id,
@@ -19,6 +21,7 @@ const PortfolioCard = ({
 }: portfolioCardProps) => {
   const { isMobile } = useIsMobile();
   const controls = useAnimation();
+  const { isLoading, handleLoadingComplete } = useIsLoading();
 
   const handleMobileHoverStart = async () => {
     await controls.start({
@@ -95,7 +98,15 @@ const PortfolioCard = ({
       animate={controls}
     >
       <div className="relative mb-4 h-36 w-full overflow-hidden rounded shadow-inner shadow-black25">
-        <Image fill src={image} alt={title} className="w-full object-cover" />
+        <Image
+          fill
+          src={image}
+          alt={title}
+          className="w-full object-cover"
+          onLoadingComplete={handleLoadingComplete}
+        />
+
+        {isLoading && <ShimmerLoading />}
       </div>
       <h2 className="pb-2 text-xl font-semibold">
         {title.length > 20 ? title.substring(0, 20) + "..." : title}

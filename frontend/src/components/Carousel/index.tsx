@@ -7,6 +7,8 @@ import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import getPortfolioData from "~/shared/utils/getPortfolioData";
 import useSwipe from "~/hooks/useSwipe";
 import useIsMobile from "~/hooks/useIsMobile";
+import LoadingSpinner from "../LoadingSpinner";
+import useMultipleIsLoading from "~/hooks/useMultipleIsLoading";
 
 type CarouselProp = {
   selectedCardId: number;
@@ -15,9 +17,11 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
   const dispatch = useDispatch();
   const portfolioCards = getPortfolioData();
   const [currentId, setCurrentId] = useState(1);
-  const carouselImages = portfolioCards[selectedCardId - 1]?.projectImagesLink;
   const { isMobile, isTablet } = useIsMobile();
   const isDesktop = !isMobile && !isTablet;
+  const carouselImages = portfolioCards[selectedCardId - 1]?.projectImagesLink;
+  const { isLoading, handleLoadingComplete } =
+    useMultipleIsLoading(carouselImages);
 
   const handleClose = () => {
     dispatch(setIsCarousel(false));
@@ -77,11 +81,13 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
             id={`image${imageLink.id}`}
             className={`${isDesktop ? "" : ""} relative w-full flex-shrink-0`}
           >
+            {isLoading && <LoadingSpinner />}
             <Image
               src={imageLink.link}
               alt="portfolio"
               fill
               objectFit="contain"
+              onLoadingComplete={() => handleLoadingComplete(index)}
             />
           </div>
         ))}

@@ -169,7 +169,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
       title: "E-Learning System",
       image: "/els1.png",
       description:
-        "This was my first React and Laravel API project that was base on my training on my previous company before transfering me to the other project and collaborate with other developers. And about the project the ELS (E-Learning System) is an E-learning platform designed to provide users with an interactive for enhancing their knowledge. This project focuses on users to answer variants of categories, track their performance, save answered questions, and connect with fellow learners.",
+        "This was my first React and Laravel API project that was based on my training on my previous company before transfering me to the other project and collaborate with other developers. And about the project the ELS (E-Learning System) is an E-learning platform designed to provide users with an interactive for enhancing their knowledge. This project focuses on users to answer variants of categories, track their performance, save answered questions, and connect with fellow learners.",
       projectDescription: [
         {
           id: 1,
@@ -321,7 +321,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
       title: "Messenger Clone App",
       image: "/CMA3.jpg",
       description:
-        "This project is only for upskilling, because one of our team leader instructed us to practice or upskill in Flutter and Firebase firestore because we have upcoming mobile development project, but I didn't finish it due of transfering to simulation project. However about this project is the Facebook Messenger Clone App represents a recreated or replicated and improvised user interface that Meta messenger doesn't have. This project focuses on the visual presentation and structure of the Messenger app.",
+        "This project is only for upskilling, because one of our team leader instructed us to practice or upskill in Flutter and Firebase firestore because we have upcoming mobile development project at that time, but I didn't finish it due of transfering to simulation project. However about this project is the Facebook Messenger Clone App represents a recreated or replicated and improvised user interface that Meta messenger doesn't have. This project focuses on the visual presentation and structure of the Messenger app.",
       projectDescription: [
         {
           id: 1,
