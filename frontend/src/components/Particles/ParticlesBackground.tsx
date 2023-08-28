@@ -18,7 +18,7 @@ export default function ParticlesBackground() {
           interactivity: {
             events: {
               onClick: {
-                enable: true,
+                enable: false,
                 mode: "push",
               },
               onHover: {
@@ -66,7 +66,7 @@ export default function ParticlesBackground() {
                 enable: true,
                 area: 800,
               },
-              value: 10,
+              value: 80,
             },
             opacity: {
               value: 0.5,

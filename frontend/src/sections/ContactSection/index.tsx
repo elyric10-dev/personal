@@ -1,37 +1,37 @@
-import React from "react";
-import ArrowIcon from "~/shared/icons/ArrowIcon";
-import { useDispatch } from "react-redux";
-import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
+import React, { useRef } from "react";
 import DetectCurrentPage from "~/components/DetectCurrentPage";
+import { motion, useInView } from "framer-motion";
+import WhereILocatedSection from "./WhereILocatedSection";
+import MessageSection from "./MessageSection";
+import Footer from "./Footer";
 
 interface props {
   isDark?: boolean;
 }
 const ContactSection = ({ isDark }: props) => {
-  const dispatch = useDispatch();
+  const titleRef = useRef(null);
+  const isInTitle = useInView(titleRef);
 
-  const handleNav = (currentNavLink: string): void => {
-    const element = document.getElementById(currentNavLink);
-    dispatch(setCurrentNavLink(currentNavLink));
-
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
-    <div id="contact" className="relative h-full w-full ">
-      CONTACT SECTION
+    <div id="contact" className="relative w-full ">
+      <motion.h1
+        ref={titleRef}
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: isInTitle ? 0 : -200, opacity: isInTitle ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`${
+          isDark ? "text-gray-100" : "text-black25"
+        } py-6 pl-6 text-5xl font-bold`}
+      >
+        CONTACT
+      </motion.h1>
       <DetectCurrentPage topPageId="portfolio" currentPageId="contact" />
-      <div className="absolute bottom-0 h-20 w-full cursor-pointer">
-        <div onClick={() => handleNav("home")}>
-          <ArrowIcon
-            className={`absolute bottom-3 right-0 mr-7 animate-bounce shadow-md ${
-              isDark ? "bg-dark" : "bg-light"
-            } `}
-            width={40}
-            height={40}
-          />
-        </div>
+      <div className="relative grid h-full w-full gap-4">
+        <article className="md:flex md:gap-4">
+          <WhereILocatedSection />
+          <MessageSection />
+        </article>
+        <Footer />
       </div>
     </div>
   );
