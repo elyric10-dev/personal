@@ -6,6 +6,7 @@ import ArrowIcon from "~/shared/icons/ArrowIcon";
 import { useDispatch } from "react-redux";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import { motion } from "framer-motion";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Footer = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    dispatch(setDirectScrollCount(0));
   };
   const isDark = useIsDark();
   return (

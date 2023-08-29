@@ -24,8 +24,8 @@ const SectionPages = () => {
           <FloatingNavigation />
           <ParticlesBackground />
           <HeroSection />
-          <AboutSection />
           <PortfolioSection />
+          <AboutSection />
           <ContactSection isDark={isDark} />
         </section>
       </AnimatePresence>

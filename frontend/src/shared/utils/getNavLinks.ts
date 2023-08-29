@@ -5,12 +5,12 @@ const getNavLinks = () => {
       id: "home",
     },
     {
-      label: "ABOUT",
-      id: "about",
-    },
-    {
       label: "PORTFOLIO",
       id: "portfolio",
+    },
+    {
+      label: "ABOUT",
+      id: "about",
     },
     {
       label: "CONTACT",

@@ -3,17 +3,19 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { setIsCarousel } from "~/redux/features/isCarouselSlice";
 import { setIsVisible } from "~/redux/features/portfolioBottomSheetSlice";
-import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import getPortfolioData from "~/shared/utils/getPortfolioData";
 import useSwipe from "~/hooks/useSwipe";
 import useIsMobile from "~/hooks/useIsMobile";
 import LoadingSpinner from "../LoadingSpinner";
 import useMultipleIsLoading from "~/hooks/useMultipleIsLoading";
+import useIsDark from "~/hooks/useIsDark";
+import ChevronPlainIcon from "~/shared/icons/ChevronPlain";
 
 type CarouselProp = {
   selectedCardId: number;
 };
 const Carousel = ({ selectedCardId }: CarouselProp) => {
+  const isDark = useIsDark();
   const dispatch = useDispatch();
   const portfolioCards = getPortfolioData();
   const [currentId, setCurrentId] = useState(1);
@@ -63,7 +65,9 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
       <div className="absolute left-0 top-0 z-10 flex h-14 w-full items-center">
         <div
           onClick={handleClose}
-          className="trans group flex cursor-default items-center rounded-full bg-opacity-50 px-2 pb-2 text-5xl font-extrabold text-dark hover:bg-black25"
+          className={`${
+            isDark ? "hover:text-[#fea200]" : "hover:text-[#0092ff]"
+          } trans group flex cursor-default items-center rounded-full bg-opacity-50 px-2 pb-2 text-5xl font-extrabold text-gray-200 hover:bg-black25`}
         >
           <span className="">←</span>
         </div>
@@ -98,9 +102,9 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
             <div className="relative h-full w-9">
               <div
                 onClick={() => handlePrevious()}
-                className="trans rotate-90 rounded-full bg-gray-300"
+                className="trans grid h-full rotate-180 place-items-center"
               >
-                <ChevronDarkIcon />
+                <ChevronPlainIcon className="fill-gray-300" />
               </div>
             </div>
             <div className="flex h-full items-center gap-2">
@@ -113,7 +117,9 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
                     }
                     className={`${
                       currentId === imageLink.id ? "h-4 w-4" : "h-2 w-2"
-                    } trans rounded-full border bg-dark`}
+                    } ${
+                      isDark ? "bg-[#fea200]" : "bg-[#0092ff]"
+                    } trans rounded-full border`}
                   ></div>
                 )
               )}
@@ -121,9 +127,9 @@ const Carousel = ({ selectedCardId }: CarouselProp) => {
             <div className="h-full w-9">
               <div
                 onClick={() => handleNext()}
-                className="trans -rotate-90 rounded-full bg-gray-300"
+                className="trans grid h-full rotate-0 place-items-center"
               >
-                <ChevronDarkIcon />
+                <ChevronPlainIcon className="fill-gray-300" />
               </div>
             </div>
           </div>
