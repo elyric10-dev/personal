@@ -37,7 +37,8 @@ const PortfolioSection = () => {
   };
   return (
     <div id="portfolio" className="relative h-auto w-full">
-      <DetectCurrentPage topPageId="about" currentPageId="portfolio" />
+      <DetectCurrentPage topPageId="portfolio" currentPageId="portfolio" />
+      {/* <DetectCurrentPage topPageId="portfolio" currentPageId="portfolio" /> */}
       <motion.h1
         ref={titleRef}
         initial={{ x: -200, opacity: 0 }}

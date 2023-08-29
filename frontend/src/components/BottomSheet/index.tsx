@@ -39,7 +39,9 @@ const BottomSheet = ({ children }: bottomSheetProp) => {
               }}
               transition={{ duration: 0.2 }}
               className={`${
-                isDark ? "bg-cyan-950" : "bg-[#fff5f0]"
+                isDark
+                  ? "bg-gradient-to-tr from-cyan-950 to-cyan-800"
+                  : "bg-gradient-to-tr from-gray-100 to-gray-200"
               } fixed bottom-0 z-20 h-3/4 max-h-[720px] w-full max-w-[1920px] overflow-y-scroll rounded-t-3xl px-2 pt-2 scrollbar-hide`}
             >
               <div className="h-full w-full overflow-y-scroll rounded-t-2xl scrollbar-hide">

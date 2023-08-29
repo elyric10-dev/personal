@@ -25,19 +25,29 @@ function ProfileCard({ isDark }: ProfileCardProp) {
       transition={{ duration: 1 }}
       className={`grid w-full min-w-[400px] flex-1 place-items-center py-6`}
     >
-      <PersonalCard>
+      <PersonalCard className="w-[400px] bg-gradient-to-tr from-[rgba(255,255,255,0.55)] to-[rgba(255,255,255,0.3)]">
         <div ref={cardRef} className="relative flex h-full w-full flex-col">
-          <div className="relative h-28 w-full">
+          <div
+            className={`${
+              isDark
+                ? "border-[rgba(254,162,0,0.8)]"
+                : "border-[rgba(0,146,255,0.8)]"
+            } relative h-52 w-full overflow-hidden rounded-lg border-2`}
+          >
             <Image src="/bg.jpg" alt="card" objectFit="cover" fill />
           </div>
-          <div className="relative h-10 w-full">
+          <div className="relative h-20 w-full">
             <div
-              className={`absolute bottom-0 left-[50%] h-20 w-20 -translate-x-10 overflow-hidden rounded-full border-4 ${
-                isDark ? "border-dark" : "border-light"
+              className={`absolute bottom-0 left-[50%] h-40 w-40 -translate-x-1/2 overflow-hidden rounded-full border-4 ${
+                isDark
+                  ? "border-[rgba(254,162,0,0.8)]"
+                  : "border-[rgba(0,146,255,0.8)]"
               }`}
             >
               <Image
-                src={`${isDark ? "/triDark.png" : "/triLight.png"}`}
+                src={`${
+                  isDark ? "/elyricmanatad1.JPG" : "/elyricmanatad1.JPG"
+                }`}
                 alt="profile"
                 width={600}
                 height={600}
@@ -46,26 +56,56 @@ function ProfileCard({ isDark }: ProfileCardProp) {
               />
             </div>
           </div>
-          <div className="w-full bg-green-400"></div>
         </div>
 
         <div
           className={`${
-            isDark ? "text-gray-100" : "text-black25"
+            isDark ? "text-gray-50" : "text-black25"
           } w-full text-center`}
         >
           <p className="text-xl font-bold">ELYRIC</p>
           <p className="text-xl font-bold">MANATAD</p>
         </div>
         <div className="mt-5 h-[2px] w-[100%] bg-gray-600"></div>
-        <div
-          className={`${
-            isDark ? "text-gray-100" : "text-black25"
-          } pb-16 text-lg font-semibold`}
-        >
+        <div className={`${isDark ? "text-gray-100" : "text-black25"} text-lg`}>
           WEB DEVELOPER
         </div>
-        <ul className="absolute bottom-0 flex w-full items-center justify-evenly border-t border-gray-400 py-1">
+        <div
+          className={`w-full py-4 ${isDark ? "text-gray-300" : "text-black25"}`}
+        >
+          <h3 className="text-md">Previous Company:</h3>
+          <div className="flex justify-between gap-2">
+            <Image
+              src="/sun_asterisk.png"
+              alt="company"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+            <div className="flex flex-col items-end justify-center">
+              <h3 className="text-lg font-semibold">
+                Sun Asterisk Philippines
+              </h3>
+              <p className="">Junior Web Developer</p>
+            </div>
+          </div>
+          <div className="flex justify-between gap-2 ">
+            <div className="rounded-full bg-gray-200">
+              <Image
+                src="/question_mark.png"
+                alt="company"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+            </div>
+            <div className="flex flex-col items-end justify-center">
+              <h3 className="text-lg font-semibold">Your company</h3>
+              <p className="">will be displayed here</p>
+            </div>
+          </div>
+        </div>
+        <ul className="absolute bottom-0 flex w-full items-center justify-evenly border-t border-gray-400 py-2">
           {socials.map((social, index) => (
             <Link key={index} href={social.link} target="__blank">
               <motion.li

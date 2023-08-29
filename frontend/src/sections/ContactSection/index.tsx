@@ -13,7 +13,9 @@ const ContactSection = ({ isDark }: props) => {
   const isInTitle = useInView(titleRef);
 
   return (
-    <div id="contact" className="relative w-full ">
+    <div id="contact" className="bg=red relative w-full">
+      {/* <DetectCurrentPage topPageId={"about"} currentPageId={"contact"} /> */}
+      <DetectCurrentPage topPageId={"contact"} currentPageId={"contact"} />
       <motion.h1
         ref={titleRef}
         initial={{ x: -200, opacity: 0 }}
@@ -25,7 +27,6 @@ const ContactSection = ({ isDark }: props) => {
       >
         CONTACT
       </motion.h1>
-      <DetectCurrentPage topPageId="portfolio" currentPageId="contact" />
       <div className="relative grid h-full w-full gap-4">
         <article className="md:flex md:gap-4">
           <WhereILocatedSection />

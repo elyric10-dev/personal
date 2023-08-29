@@ -4,10 +4,10 @@ const getPortfolioData = (): portfolioDataProp[] => {
   return [
     {
       id: 1,
-      title: "Iskawt System",
+      title: "Administrative System",
       image: "/is1.png",
       description:
-        "One of the project in our school. The Iskawt System is an administrative control system designed to manage user applications.",
+        "One of the project in our school. This System is an administrative control system designed to manage user applications.",
       projectDescription: [
         {
           id: 1,
@@ -400,7 +400,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
           link: "/CMA11.jpg",
         },
       ],
-      projectGithubLink: "",
+      projectGithubLink: "https://github.com/elyric10-dev/Messenger-Clone",
       techStacks: [
         {
           id: 1,

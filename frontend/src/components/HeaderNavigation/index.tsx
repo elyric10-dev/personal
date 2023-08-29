@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import SlidingElement from "~/animations/SlidingElement";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import useMouseScroll from "~/hooks/useMouseScroll";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const HeaderNavigation: React.FC = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,9 @@ const HeaderNavigation: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+
+    if (navLink != "home") dispatch(setDirectScrollCount(1));
+    else dispatch(setDirectScrollCount(0));
   };
 
   return (

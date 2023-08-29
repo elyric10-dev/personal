@@ -4,6 +4,7 @@ import { type RootState } from "~/redux/types";
 import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import getNavLinks from "~/shared/utils/getNavLinks";
 import { motion } from "framer-motion";
+import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const FloatingNavigation = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const FloatingNavigation = () => {
 
   const handleNavLink = (navLink: string) => {
     const element = document.getElementById(navLink);
+    if (navLink != "home") dispatch(setDirectScrollCount(1));
+    else dispatch(setDirectScrollCount(0));
 
     dispatch(setCurrentNavLink(navLink));
     if (element) {

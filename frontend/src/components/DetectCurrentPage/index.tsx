@@ -30,11 +30,11 @@ const DetectCurrentPage = ({ topPageId, currentPageId }: pageIdProp) => {
     <React.Fragment>
       <div
         ref={topRef}
-        className="pointer-events-none absolute left-1/2 top-1/4"
+        className="pointer-events-none absolute left-1/2 top-1/4 bg-red"
       ></div>
       <div
         ref={bottomRef}
-        className="pointer-events-none absolute bottom-1/4 left-1/2"
+        className="pointer-events-none absolute bottom-1/4 left-1/2 bg-red"
       ></div>
     </React.Fragment>
   );

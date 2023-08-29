@@ -1,15 +1,10 @@
 import FacebookIcon from "~/shared/icons/FacebookIcon";
 import GithubIcon from "~/shared/icons/techStacks/GithubIcon";
 import LinkedInIcon from "~/shared/icons/LinkedInIcon";
-import { useDispatch } from "react-redux";
-import ChevronDarkIcon from "~/shared/icons/ChevronDarkIcon";
 import Link from "next/link";
-import { setCurrentNavLink } from "~/redux/features/currentNavLinkSlice";
 import useIsDark from "~/hooks/useIsDark";
-import { setDirectScrollCount } from "~/redux/features/mouseScrollSlice";
 
 const SocialSection = () => {
-  const dispatch = useDispatch();
   const isDark = useIsDark();
 
   const topLogoStyle = ` ${
@@ -33,17 +28,10 @@ const SocialSection = () => {
       link: "https://www.linkedin.com/in/elyric-manatad-422b15218/",
     },
   ];
-
-  const handleNav = (currentNavLink: string): void => {
-    dispatch(setCurrentNavLink(currentNavLink));
-    dispatch(setDirectScrollCount(2));
-    const element = document.getElementById(currentNavLink);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
   return (
-    <div className="absolute bottom-0 h-20 w-full">
-      <div className={`relative flex h-full w-full backdrop-blur-[1.5px]`}>
-        <ul className="flex h-full items-center gap-3 pl-8 shadow-lg">
+    <div className={`relative h-[10%] w-full shadow-lg backdrop-blur-[1.5px]`}>
+      <div className={`relative flex h-full w-full`}>
+        <ul className="flex h-full items-center gap-3 pl-8">
           {socials.map((social, index) => (
             <Link href={social.link} key={index} target="__blank">
               <li
@@ -57,9 +45,6 @@ const SocialSection = () => {
             </Link>
           ))}
         </ul>
-        <div onClick={() => handleNav("about")}>
-          <ChevronDarkIcon className="absolute inset-0 m-auto h-16 w-16 animate-bounce cursor-pointer rounded-full bg-white opacity-40" />
-        </div>
       </div>
     </div>
   );
