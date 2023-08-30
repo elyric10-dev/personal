@@ -16,11 +16,11 @@ const HeroSection = () => {
         <DetectCurrentPage topPageId={"home"} currentPageId={"home"} />
         <div
           className={`${
-            isDesktop ? "flex-row" : "flex-col"
+            isDesktop ? "flex-row" : "flex-col-reverse"
           } relative flex h-[90%] w-full`}
         >
-          <WelcomeSection isDark={isDark} />
-          <ImageHero isDark={isDark} isDesktop={isDesktop} />
+          <WelcomeSection isDark={isDark} isDesktop={isDesktop} />
+          <ImageHero isDark={isDark} />
         </div>
         <SocialSection />
       </div>
