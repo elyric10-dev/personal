@@ -7,10 +7,9 @@ import Typewriter from "typewriter-effect";
 
 type WelcomeSectionProp = {
   isDark: boolean;
-  isDesktop: boolean;
 };
 
-const WelcomeSection = ({ isDark, isDesktop }: WelcomeSectionProp) => {
+const WelcomeSection = ({ isDark }: WelcomeSectionProp) => {
   const dispatch = useDispatch();
 
   const handleClick = (navLink: string) => {
@@ -21,11 +20,7 @@ const WelcomeSection = ({ isDark, isDesktop }: WelcomeSectionProp) => {
   };
 
   return (
-    <div
-      className={`relative flex h-full w-full flex-1 justify-center ${
-        isDesktop ? "pt-24" : "pt=0"
-      }`}
-    >
+    <div className="relative flex h-full w-full flex-1 justify-center pt-24">
       <motion.div
         initial={{ opacity: 0, x: -400 }}
         animate={{ opacity: 1, x: 0 }}

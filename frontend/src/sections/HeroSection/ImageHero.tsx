@@ -4,17 +4,18 @@ import Image from "next/image";
 
 type ImageHeroProp = {
   isDark: boolean;
+  isDesktop: boolean;
 };
 
-const ImageHero = ({ isDark }: ImageHeroProp) => {
+const ImageHero = ({ isDark, isDesktop }: ImageHeroProp) => {
   return (
     <div className="relative flex h-full w-full flex-1 justify-center py-52">
       <motion.div className="relative h-full w-full justify-center">
         <Image
-          src={`${isDark ? "/elyricHeroDark.png" : "/elyricHeroLight.png"}`}
+          src={`${isDark ? "/elyricHeroDark6.png" : "/elyricHeroLight6.png"}`}
           alt="profile"
-          width={800}
-          height={800}
+          width={isDesktop ? 800 : 500}
+          height={isDesktop ? 800 : 500}
           className="absolute-center trans"
         />
       </motion.div>

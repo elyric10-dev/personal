@@ -5,7 +5,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
     {
       id: 1,
       title: "Administrative System",
-      image: "/Projects/Administrative Management/is1.png",
+      image: "/is1.png",
       description:
         "One of the project in our school. This System is an administrative control system designed to manage user applications.",
       projectDescription: [
@@ -55,67 +55,67 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/Projects/Administrative Management/is1.png",
+          link: "/is1.png",
         },
         {
           id: 2,
-          link: "/Projects/Administrative Management/is2.png",
+          link: "/is2.png",
         },
         {
           id: 3,
-          link: "/Projects/Administrative Management/is3.png",
+          link: "/is3.png",
         },
         {
           id: 4,
-          link: "/Projects/Administrative Management/is4.png",
+          link: "/is4.png",
         },
         {
           id: 5,
-          link: "/Projects/Administrative Management/is5.png",
+          link: "/is5.png",
         },
         {
           id: 6,
-          link: "/Projects/Administrative Management/is6.png",
+          link: "/is6.png",
         },
         {
           id: 7,
-          link: "/Projects/Administrative Management/is7.png",
+          link: "/is7.png",
         },
         {
           id: 8,
-          link: "/Projects/Administrative Management/is8.png",
+          link: "/is8.png",
         },
         {
           id: 9,
-          link: "/Projects/Administrative Management/is9.png",
+          link: "/is9.png",
         },
         {
           id: 10,
-          link: "/Projects/Administrative Management/is10.png",
+          link: "/is10.png",
         },
         {
           id: 11,
-          link: "/Projects/Administrative Management/is11.png",
+          link: "/is11.png",
         },
         {
           id: 12,
-          link: "/Projects/Administrative Management/is12.png",
+          link: "/is12.png",
         },
         {
           id: 13,
-          link: "/Projects/Administrative Management/is13.png",
+          link: "/is13.png",
         },
         {
           id: 14,
-          link: "/Projects/Administrative Management/is14.png",
+          link: "/is14.png",
         },
         {
           id: 15,
-          link: "/Projects/Administrative Management/is15.png",
+          link: "/is15.png",
         },
         {
           id: 16,
-          link: "/Projects/Administrative Management/is16.png",
+          link: "/is16.png",
         },
       ],
       projectGithubLink: "https://github.com/elyric10-dev/iskawt-system",
@@ -167,7 +167,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
     {
       id: 2,
       title: "E-Learning System",
-      image: "/Projects/E-Learning System/els1.png",
+      image: "/els1.png",
       description:
         "This was my first React and Laravel API project that was based on my training on my previous company before transfering me to the other project and collaborate with other developers. And about the project the ELS (E-Learning System) is an E-learning platform designed to provide users with an interactive for enhancing their knowledge. This project focuses on users to answer variants of categories, track their performance, save answered questions, and connect with fellow learners.",
       projectDescription: [
@@ -217,67 +217,67 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/Projects/E-Learning System/els1.png",
+          link: "/els1.png",
         },
         {
           id: 2,
-          link: "/Projects/E-Learning System/els2.png",
+          link: "/els2.png",
         },
         {
           id: 3,
-          link: "/Projects/E-Learning System/els3.png",
+          link: "/els3.png",
         },
         {
           id: 4,
-          link: "/Projects/E-Learning System/els4.png",
+          link: "/els4.png",
         },
         {
           id: 5,
-          link: "/Projects/E-Learning System/els5.png",
+          link: "/els5.png",
         },
         {
           id: 6,
-          link: "/Projects/E-Learning System/els6.png",
+          link: "/els6.png",
         },
         {
           id: 7,
-          link: "/Projects/E-Learning System/els7.png",
+          link: "/els7.png",
         },
         {
           id: 8,
-          link: "/Projects/E-Learning System/els8.png",
+          link: "/els8.png",
         },
         {
           id: 9,
-          link: "/Projects/E-Learning System/els9.png",
+          link: "/els9.png",
         },
         {
           id: 10,
-          link: "/Projects/E-Learning System/els10.png",
+          link: "/els10.png",
         },
         {
           id: 11,
-          link: "/Projects/E-Learning System/els11.png",
+          link: "/els11.png",
         },
         {
           id: 12,
-          link: "/Projects/E-Learning System/els12.png",
+          link: "/els12.png",
         },
         {
           id: 13,
-          link: "/Projects/E-Learning System/els13.png",
+          link: "/els13.png",
         },
         {
           id: 14,
-          link: "/Projects/E-Learning System/els14.png",
+          link: "/els14.png",
         },
         {
           id: 15,
-          link: "/Projects/E-Learning System/els15.png",
+          link: "/els15.png",
         },
         {
           id: 16,
-          link: "/Projects/E-Learning System/els16.png",
+          link: "/els16.png",
         },
       ],
       projectGithubLink: "https://github.com/elyric10-dev/e-learning-system",
@@ -319,7 +319,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
     {
       id: 3,
       title: "Messenger Clone App",
-      image: "/Projects/Messenger Clone/CMA3.jpg",
+      image: "/CMA3.jpg",
       description:
         "This project is only for upskilling, because one of our team leader instructed us to practice or upskill in Flutter and Firebase firestore because we have upcoming mobile development project at that time, but I didn't finish it due of transfering to simulation project. However about this project is the Facebook Messenger Clone App represents a recreated or replicated and improvised user interface that Meta messenger doesn't have. This project focuses on the visual presentation and structure of the Messenger app.",
       projectDescription: [
@@ -357,47 +357,47 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/Projects/Messenger Clone/CMA1.jpg",
+          link: "/CMA1.jpg",
         },
         {
           id: 2,
-          link: "/Projects/Messenger Clone/CMA2.jpg",
+          link: "/CMA2.jpg",
         },
         {
           id: 3,
-          link: "/Projects/Messenger Clone/CMA3.jpg",
+          link: "/CMA3.jpg",
         },
         {
           id: 4,
-          link: "/Projects/Messenger Clone/CMA4.jpg",
+          link: "/CMA4.jpg",
         },
         {
           id: 5,
-          link: "/Projects/Messenger Clone/CMA5.jpg",
+          link: "/CMA5.jpg",
         },
         {
           id: 6,
-          link: "/Projects/Messenger Clone/CMA6.jpg",
+          link: "/CMA6.jpg",
         },
         {
           id: 7,
-          link: "/Projects/Messenger Clone/CMA7.jpg",
+          link: "/CMA7.jpg",
         },
         {
           id: 8,
-          link: "/Projects/Messenger Clone/CMA8.jpg",
+          link: "/CMA8.jpg",
         },
         {
           id: 9,
-          link: "/Projects/Messenger Clone/CMA9.jpg",
+          link: "/CMA9.jpg",
         },
         {
           id: 10,
-          link: "/Projects/Messenger Clone/CMA10.jpg",
+          link: "/CMA10.jpg",
         },
         {
           id: 11,
-          link: "/Projects/Messenger Clone/CMA11.jpg",
+          link: "/CMA11.jpg",
         },
       ],
       projectGithubLink: "https://github.com/elyric10-dev/Messenger-Clone",
@@ -423,8 +423,8 @@ const getPortfolioData = (): portfolioDataProp[] => {
     },
     {
       id: 4,
-      title: "Learning Management System",
-      image: "/Projects/Learning Management/lms2.png",
+      title: "Learning Mananement System",
+      image: "/lms2.png",
       description:
         "It was the first project that I was collaborating with some of the developers. From this project is I learned a lot about developing a website because we have a code reviewer and that's our seniors. And about this project it is a specialized platform tailored for members of my previous company emails only. Accessible exclusively through authorized Google email addresses, this system serves as a hub for employees seeking to enhance their skills and manage their learning journeys.",
       projectDescription: [
@@ -468,39 +468,39 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/Projects/Learning Management/lms1.png",
+          link: "/lms1.png",
         },
         {
           id: 2,
-          link: "/Projects/Learning Management/lms2.png",
+          link: "/lms2.png",
         },
         {
           id: 3,
-          link: "/Projects/Learning Management/lms3.png",
+          link: "/lms3.png",
         },
         {
           id: 4,
-          link: "/Projects/Learning Management/lms4.png",
+          link: "/lms4.png",
         },
         {
           id: 5,
-          link: "/Projects/Learning Management/lms5.png",
+          link: "/lms5.png",
         },
         {
           id: 6,
-          link: "/Projects/Learning Management/lms6.png",
+          link: "/lms6.png",
         },
         {
           id: 7,
-          link: "/Projects/Learning Management/lms7.png",
+          link: "/lms7.png",
         },
         {
           id: 8,
-          link: "/Projects/Learning Management/lms8.png",
+          link: "/lms8.png",
         },
         {
           id: 9,
-          link: "/Projects/Learning Management/lms9.png",
+          link: "/lms9.png",
         },
       ],
       projectGithubLink: "https://github.com/framgia/sph-lms",
@@ -552,7 +552,7 @@ const getPortfolioData = (): portfolioDataProp[] => {
     {
       id: 5,
       title: "Portfolio Website",
-      image: "/Projects/Personal Portfolio/pp1.png",
+      image: "/bg.jpg",
       description:
         "The Portfolio Website is to showcase of my work and abilities aimed at attracting potential employers looking to hire a web developer. This website highlights my projects and skills, serving as a digital representation of my capabilities.",
       projectDescription: [
@@ -590,19 +590,23 @@ const getPortfolioData = (): portfolioDataProp[] => {
       projectImagesLink: [
         {
           id: 1,
-          link: "/Projects/Personal Portfolio/pp1.png",
+          link: "/bg.jpg",
         },
         {
           id: 2,
-          link: "/Projects/Personal Portfolio/pp2.png",
+          link: "/bg.jpg",
         },
         {
           id: 3,
-          link: "/Projects/Personal Portfolio/pp3.png",
+          link: "/bg.jpg",
         },
         {
           id: 4,
-          link: "/Projects/Personal Portfolio/pp4.png",
+          link: "/bg.jpg",
+        },
+        {
+          id: 5,
+          link: "/bg.jpg",
         },
       ],
       projectGithubLink: "https://github.com/elyric10-dev/personal",

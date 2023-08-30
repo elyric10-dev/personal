@@ -4,13 +4,12 @@ import FacebookIcon from "~/shared/icons/FacebookIcon";
 import LinkedInIcon from "~/shared/icons/LinkedInIcon";
 import useIsDark from "~/hooks/useIsDark";
 import EmailForm from "~/components/EmailForm";
-import useIsMobile from "~/hooks/useIsMobile";
+
 const MessageSection = () => {
   const isDark = useIsDark();
-  const { isMobile } = useIsMobile();
   return (
     <section className="flex w-full flex-1 flex-col gap-4 pt-4 md:pt-0 lg:max-w-[500px]">
-      <div className={`${isMobile ? "pl-4" : "pl-0"}`}>
+      <div>
         <h2
           className={`${
             isDark ? "text-gray-100" : "text-black25"
@@ -51,11 +50,7 @@ const MessageSection = () => {
         </div>
       </div>
       <div>
-        <h3
-          className={`${isDark ? "text-gray-100" : "text-black25"} ${
-            isMobile ? "pl-4" : "pl-0"
-          } text-md`}
-        >
+        <h3 className={`${isDark ? "text-gray-100" : "text-black25"} text-md`}>
           Contact via email:
         </h3>
       </div>

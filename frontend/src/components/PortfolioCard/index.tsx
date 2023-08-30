@@ -9,7 +9,6 @@ import Link from "next/link";
 import { type portfolioCardProps } from "~/shared/utils/types";
 import ShimmerLoading from "../ShimmerLoading";
 import useIsLoading from "~/hooks/useIsLoading";
-import useIsDark from "~/hooks/useIsDark";
 
 const PortfolioCard = ({
   id,
@@ -23,7 +22,6 @@ const PortfolioCard = ({
   const { isMobile } = useIsMobile();
   const controls = useAnimation();
   const { isLoading, handleLoadingComplete } = useIsLoading();
-  const isDark = useIsDark();
 
   const handleMobileHoverStart = async () => {
     await controls.start({
@@ -87,11 +85,7 @@ const PortfolioCard = ({
 
   return (
     <motion.div
-      className={`${
-        isDark
-          ? "shadow-[-5px_5px_10px_0px_rgb(0,0,0,0.5)] hover:shadow-[0px_40px_25px_-20px_rgb(0,0,0,0.5)]"
-          : "shadow-[-5px_5px_10px_0px_rgb(0,0,0,0.4)] hover:shadow-[0px_40px_25px_-20px_rgb(0,0,0,0.2)]"
-      } relative mb-10 flex h-full w-64 flex-shrink-0 cursor-default flex-col rounded-lg border border-[rgba(0,0,0,0.1)] bg-gray-200 p-2 text-center transition-shadow duration-200 hover:z-10`}
+      className="relative flex h-full w-64 flex-shrink-0 cursor-default flex-col rounded-lg border border-[rgba(0,0,0,0.1)] bg-gray-200 p-2 text-center shadow-[-5px_5px_10px_0px_rgb(0,0,0,0.5)] transition-shadow duration-200 hover:z-10 hover:shadow-[0px_40px_25px_-20px_rgb(0,0,0,0.25)]"
       onMouseEnter={() => {
         if (isMobile) void handleMobileHoverStart();
         else void handleDesktopHoverStart();
