@@ -86,7 +86,7 @@ function ProfileCard({ isDark }: ProfileCardProp) {
               <h3 className="text-lg font-semibold">
                 Sun Asterisk Philippines
               </h3>
-              <p className="">Junior Web Developer</p>
+              <p className="">Junior Web Developer (Internship)</p>
             </div>
           </div>
           <div className="flex justify-between gap-2 ">

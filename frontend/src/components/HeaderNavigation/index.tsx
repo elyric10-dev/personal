@@ -35,10 +35,12 @@ const HeaderNavigation: React.FC = () => {
       : "text-md lg:text-xl font-[300] md:mx-3 lg:mx-6 border-none hover:rounded-br-2xl hover:rounded-tl-2xl"
   } ${
     isDark
-      ? "hover:text-dark hover:bg-gray-600 hover:bg-opacity-20"
-      : "hover:text-light hover:bg-gray-300 hover:bg-opacity-20"
+      ? "hover:text-dark hover:bg-gray-600 hover:bg-opacity-50"
+      : "hover:text-light hover:bg-gray-300 hover:bg-opacity-50"
   } border border-b cursor-pointer font-semibold`;
-  const activeLink = `${isDark ? "text-dark" : "text-light"} font-bold`;
+  const activeLink = `${
+    isDark ? "text-[#fea200]" : "text-[#0092ff]"
+  } font-bold`;
 
   const isLinkActive = (currentLink: string) =>
     (isClient && currentNavLink) === currentLink;
@@ -66,9 +68,7 @@ const HeaderNavigation: React.FC = () => {
       transition={{ duration: 0.3 }}
       className="fixed z-10 w-full max-w-[1920px]"
     >
-      <header
-        className={`relative flex justify-between p-4 backdrop-blur-[1.5px] md:p-8`}
-      >
+      <header className={`relative flex justify-between p-4 md:p-8`}>
         <div className="flex w-[200px] items-center">
           <div className="flex">
             <Image
@@ -172,9 +172,7 @@ const HeaderNavigation: React.FC = () => {
                         {navLink.label}
                         <div
                           className={`${
-                            isDark
-                              ? "bg-gray-50 hover:text-dark"
-                              : "bg-gray-700"
+                            isDark ? "bg-gray-700" : "bg-gray-700"
                           } absolute bottom-0 ${
                             isLinkActive(navLink.id)
                               ? "h-full w-full"
