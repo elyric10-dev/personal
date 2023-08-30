@@ -45,9 +45,7 @@ function ProfileCard({ isDark }: ProfileCardProp) {
               }`}
             >
               <Image
-                src={`${
-                  isDark ? "/elyricmanatad1.JPG" : "/elyricmanatad1.JPG"
-                }`}
+                src="/elyricmanatad.JPG"
                 alt="profile"
                 width={600}
                 height={600}
